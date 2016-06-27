@@ -10,4 +10,9 @@
 
 @interface GankResult : NSObject
 
+@property (copy, nonatomic) NSString *_id;
+@property (copy, nonatomic) NSString *type;
+@property (strong, nonatomic) NSURL *url;
+@property (copy, nonatomic) NSString *who;
+
 @end

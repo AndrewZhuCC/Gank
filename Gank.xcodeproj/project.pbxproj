@@ -13,6 +13,10 @@
 		491AA5601D21202400E509F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 491AA55E1D21202400E509F7 /* LaunchScreen.storyboard */; };
 		491AA56B1D21202400E509F7 /* GankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA56A1D21202400E509F7 /* GankTests.m */; };
 		491AA5761D21202400E509F7 /* GankUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5751D21202400E509F7 /* GankUITests.m */; };
+		491AA5911D2123F200E509F7 /* GankResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5901D2123F200E509F7 /* GankResult.m */; };
+		491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5931D21247700E509F7 /* MainTabBarController.m */; };
+		491AA5981D2126A800E509F7 /* XXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5971D2126A800E509F7 /* XXViewController.m */; };
+		5C4BA58A0221AF463BB181A9 /* libPods-Gank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		29CF6A505B9C3B6FD1F3A734 /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
+		426D8936369ECF3B77BBDBCF /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
 		491AA54D1D21202400E509F7 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491AA5511D21202400E509F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		491AA5531D21202400E509F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -46,6 +53,13 @@
 		491AA5711D21202400E509F7 /* GankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		491AA5751D21202400E509F7 /* GankUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GankUITests.m; sourceTree = "<group>"; };
 		491AA5771D21202400E509F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		491AA58F1D2123F200E509F7 /* GankResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GankResult.h; sourceTree = "<group>"; };
+		491AA5901D2123F200E509F7 /* GankResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankResult.m; sourceTree = "<group>"; };
+		491AA5921D21247700E509F7 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabBarController.h; path = VC/MainTabBarController.h; sourceTree = "<group>"; };
+		491AA5931D21247700E509F7 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabBarController.m; path = VC/MainTabBarController.m; sourceTree = "<group>"; };
+		491AA5961D2126A800E509F7 /* XXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXViewController.h; sourceTree = "<group>"; };
+		491AA5971D2126A800E509F7 /* XXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXViewController.m; sourceTree = "<group>"; };
+		491AA5991D21276200E509F7 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4BA58A0221AF463BB181A9 /* libPods-Gank.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +95,8 @@
 				491AA5691D21202400E509F7 /* GankTests */,
 				491AA5741D21202400E509F7 /* GankUITests */,
 				491AA54E1D21202400E509F7 /* Products */,
+				F32BFEA3527DA24EDBD8482A /* Pods */,
+				C496DAFD50D0D2C5ED2CB8B9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,8 +113,11 @@
 		491AA54F1D21202400E509F7 /* Gank */ = {
 			isa = PBXGroup;
 			children = (
+				491AA5991D21276200E509F7 /* PrefixHeader.pch */,
 				491AA5531D21202400E509F7 /* AppDelegate.h */,
 				491AA5541D21202400E509F7 /* AppDelegate.m */,
+				491AA5951D21247D00E509F7 /* VC */,
+				491AA58E1D2123F200E509F7 /* Model */,
 				491AA55C1D21202400E509F7 /* Assets.xcassets */,
 				491AA55E1D21202400E509F7 /* LaunchScreen.storyboard */,
 				491AA5611D21202400E509F7 /* Info.plist */,
@@ -132,6 +152,43 @@
 			path = GankUITests;
 			sourceTree = "<group>";
 		};
+		491AA58E1D2123F200E509F7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				491AA58F1D2123F200E509F7 /* GankResult.h */,
+				491AA5901D2123F200E509F7 /* GankResult.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		491AA5951D21247D00E509F7 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				491AA5921D21247700E509F7 /* MainTabBarController.h */,
+				491AA5931D21247700E509F7 /* MainTabBarController.m */,
+				491AA5961D2126A800E509F7 /* XXViewController.h */,
+				491AA5971D2126A800E509F7 /* XXViewController.m */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		C496DAFD50D0D2C5ED2CB8B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F32BFEA3527DA24EDBD8482A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29CF6A505B9C3B6FD1F3A734 /* Pods-Gank.debug.xcconfig */,
+				426D8936369ECF3B77BBDBCF /* Pods-Gank.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -139,9 +196,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 491AA57A1D21202400E509F7 /* Build configuration list for PBXNativeTarget "Gank" */;
 			buildPhases = (
+				C3FFE10BAA911720BB61B67A /* [CP] Check Pods Manifest.lock */,
 				491AA5491D21202400E509F7 /* Sources */,
 				491AA54A1D21202400E509F7 /* Frameworks */,
 				491AA54B1D21202400E509F7 /* Resources */,
+				A9F66E6125A1D385CF8EBA6B /* [CP] Embed Pods Frameworks */,
+				9A055019D7F3DB670A31427B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,12 +316,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9A055019D7F3DB670A31427B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gank/Pods-Gank-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9F66E6125A1D385CF8EBA6B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Gank/Pods-Gank-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3FFE10BAA911720BB61B67A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		491AA5491D21202400E509F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				491AA5551D21202400E509F7 /* AppDelegate.m in Sources */,
+				491AA5911D2123F200E509F7 /* GankResult.m in Sources */,
+				491AA5981D2126A800E509F7 /* XXViewController.m in Sources */,
+				491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */,
 				491AA5521D21202400E509F7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,7 +457,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -385,7 +496,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -395,8 +506,10 @@
 		};
 		491AA57B1D21202400E509F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29CF6A505B9C3B6FD1F3A734 /* Pods-Gank.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Gank/PrefixHeader.pch";
 				INFOPLIST_FILE = Gank/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tecom.Gank;
@@ -406,8 +519,10 @@
 		};
 		491AA57C1D21202400E509F7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 426D8936369ECF3B77BBDBCF /* Pods-Gank.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Gank/PrefixHeader.pch";
 				INFOPLIST_FILE = Gank/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tecom.Gank;
@@ -480,6 +595,7 @@
 				491AA57C1D21202400E509F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		491AA57D1D21202400E509F7 /* Build configuration list for PBXNativeTarget "GankTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +604,7 @@
 				491AA57F1D21202400E509F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		491AA5801D21202400E509F7 /* Build configuration list for PBXNativeTarget "GankUITests" */ = {
 			isa = XCConfigurationList;
@@ -496,6 +613,7 @@
 				491AA5821D21202400E509F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
