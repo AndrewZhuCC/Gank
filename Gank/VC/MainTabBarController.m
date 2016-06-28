@@ -27,6 +27,7 @@
     vc.tabBarItem = item;
     self.viewControllers = @[nvc];
     self.delegate = self;
+    self.tabBar.tintColor = [UIColor blackColor];
 }
 
 @end
