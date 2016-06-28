@@ -15,9 +15,10 @@
 		491AA5761D21202400E509F7 /* GankUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5751D21202400E509F7 /* GankUITests.m */; };
 		491AA5911D2123F200E509F7 /* GankResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5901D2123F200E509F7 /* GankResult.m */; };
 		491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5931D21247700E509F7 /* MainTabBarController.m */; };
-		491AA5981D2126A800E509F7 /* XXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5971D2126A800E509F7 /* XXViewController.m */; };
 		491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA59B1D2205C500E509F7 /* XXTableViewCell.m */; };
 		491AA59F1D22137700E509F7 /* GankResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA59E1D22137700E509F7 /* GankResponse.m */; };
+		49F4F7321D227CE500C28E7F /* IOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F72F1D227CE500C28E7F /* IOSViewController.m */; };
+		49F4F7331D227CE500C28E7F /* XXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7311D227CE500C28E7F /* XXViewController.m */; };
 		5C4BA58A0221AF463BB181A9 /* libPods-Gank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */; };
 /* End PBXBuildFile section */
 
@@ -59,13 +60,15 @@
 		491AA5901D2123F200E509F7 /* GankResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankResult.m; sourceTree = "<group>"; };
 		491AA5921D21247700E509F7 /* MainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainTabBarController.h; path = VC/MainTabBarController.h; sourceTree = "<group>"; };
 		491AA5931D21247700E509F7 /* MainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainTabBarController.m; path = VC/MainTabBarController.m; sourceTree = "<group>"; };
-		491AA5961D2126A800E509F7 /* XXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXViewController.h; sourceTree = "<group>"; };
-		491AA5971D2126A800E509F7 /* XXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXViewController.m; sourceTree = "<group>"; };
 		491AA5991D21276200E509F7 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		491AA59A1D2205C500E509F7 /* XXTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXTableViewCell.h; sourceTree = "<group>"; };
 		491AA59B1D2205C500E509F7 /* XXTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXTableViewCell.m; sourceTree = "<group>"; };
 		491AA59D1D22137700E509F7 /* GankResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GankResponse.h; sourceTree = "<group>"; };
 		491AA59E1D22137700E509F7 /* GankResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankResponse.m; sourceTree = "<group>"; };
+		49F4F72E1D227CE500C28E7F /* IOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSViewController.h; path = VC/IOSViewController.h; sourceTree = "<group>"; };
+		49F4F72F1D227CE500C28E7F /* IOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSViewController.m; path = VC/IOSViewController.m; sourceTree = "<group>"; };
+		49F4F7301D227CE500C28E7F /* XXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XXViewController.h; path = VC/XXViewController.h; sourceTree = "<group>"; };
+		49F4F7311D227CE500C28E7F /* XXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XXViewController.m; path = VC/XXViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,10 +177,12 @@
 			children = (
 				491AA5921D21247700E509F7 /* MainTabBarController.h */,
 				491AA5931D21247700E509F7 /* MainTabBarController.m */,
-				491AA5961D2126A800E509F7 /* XXViewController.h */,
-				491AA5971D2126A800E509F7 /* XXViewController.m */,
+				49F4F7301D227CE500C28E7F /* XXViewController.h */,
+				49F4F7311D227CE500C28E7F /* XXViewController.m */,
 				491AA59A1D2205C500E509F7 /* XXTableViewCell.h */,
 				491AA59B1D2205C500E509F7 /* XXTableViewCell.m */,
+				49F4F72E1D227CE500C28E7F /* IOSViewController.h */,
+				49F4F72F1D227CE500C28E7F /* IOSViewController.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -381,8 +386,9 @@
 			files = (
 				491AA5551D21202400E509F7 /* AppDelegate.m in Sources */,
 				491AA5911D2123F200E509F7 /* GankResult.m in Sources */,
-				491AA5981D2126A800E509F7 /* XXViewController.m in Sources */,
+				49F4F7321D227CE500C28E7F /* IOSViewController.m in Sources */,
 				491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */,
+				49F4F7331D227CE500C28E7F /* XXViewController.m in Sources */,
 				491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */,
 				491AA5521D21202400E509F7 /* main.m in Sources */,
 				491AA59F1D22137700E509F7 /* GankResponse.m in Sources */,
