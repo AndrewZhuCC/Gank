@@ -21,6 +21,8 @@
 		49F4F7331D227CE500C28E7F /* XXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7311D227CE500C28E7F /* XXViewController.m */; };
 		49F4F7351D229C9F00C28E7F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F4F7341D229C9F00C28E7F /* WebKit.framework */; };
 		49F4F7381D22A2B500C28E7F /* IOSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7371D22A2B500C28E7F /* IOSTableViewCell.m */; };
+		49F4F73B1D22A8BF00C28E7F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F73A1D22A8BF00C28E7F /* WebViewController.m */; };
+		49F4F73F1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F73E1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m */; };
 		5C4BA58A0221AF463BB181A9 /* libPods-Gank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,10 @@
 		49F4F7341D229C9F00C28E7F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		49F4F7361D22A2B500C28E7F /* IOSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSTableViewCell.h; path = VC/IOSTableViewCell.h; sourceTree = "<group>"; };
 		49F4F7371D22A2B500C28E7F /* IOSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSTableViewCell.m; path = VC/IOSTableViewCell.m; sourceTree = "<group>"; };
+		49F4F7391D22A8BF00C28E7F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		49F4F73A1D22A8BF00C28E7F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		49F4F73D1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+M13ProgressViewBar.h"; sourceTree = "<group>"; };
+		49F4F73E1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+M13ProgressViewBar.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 				491AA5991D21276200E509F7 /* PrefixHeader.pch */,
 				491AA5531D21202400E509F7 /* AppDelegate.h */,
 				491AA5541D21202400E509F7 /* AppDelegate.m */,
+				49F4F73C1D22C35400C28E7F /* NavigationController */,
 				491AA5951D21247D00E509F7 /* VC */,
 				491AA58E1D2123F200E509F7 /* Model */,
 				491AA55C1D21202400E509F7 /* Assets.xcassets */,
@@ -191,8 +198,19 @@
 				49F4F72F1D227CE500C28E7F /* IOSViewController.m */,
 				49F4F7361D22A2B500C28E7F /* IOSTableViewCell.h */,
 				49F4F7371D22A2B500C28E7F /* IOSTableViewCell.m */,
+				49F4F7391D22A8BF00C28E7F /* WebViewController.h */,
+				49F4F73A1D22A8BF00C28E7F /* WebViewController.m */,
 			);
 			name = VC;
+			sourceTree = "<group>";
+		};
+		49F4F73C1D22C35400C28E7F /* NavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				49F4F73D1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.h */,
+				49F4F73E1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m */,
+			);
+			path = NavigationController;
 			sourceTree = "<group>";
 		};
 		C496DAFD50D0D2C5ED2CB8B9 /* Frameworks */ = {
@@ -394,6 +412,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				491AA5551D21202400E509F7 /* AppDelegate.m in Sources */,
+				49F4F73F1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m in Sources */,
+				49F4F73B1D22A8BF00C28E7F /* WebViewController.m in Sources */,
 				491AA5911D2123F200E509F7 /* GankResult.m in Sources */,
 				49F4F7321D227CE500C28E7F /* IOSViewController.m in Sources */,
 				491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */,
