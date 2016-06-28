@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XXTableViewCell : UITableViewCell
+@class GankResult;
 
+@interface XXTableViewCell : UITableViewCell
+- (void)configureCellWithEntity:(GankResult *)entity;
+- (CGFloat)heightOfCell;
 @end

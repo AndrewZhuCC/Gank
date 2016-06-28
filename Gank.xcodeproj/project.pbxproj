@@ -16,6 +16,7 @@
 		491AA5911D2123F200E509F7 /* GankResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5901D2123F200E509F7 /* GankResult.m */; };
 		491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5931D21247700E509F7 /* MainTabBarController.m */; };
 		491AA5981D2126A800E509F7 /* XXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5971D2126A800E509F7 /* XXViewController.m */; };
+		491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA59B1D2205C500E509F7 /* XXTableViewCell.m */; };
 		5C4BA58A0221AF463BB181A9 /* libPods-Gank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,8 @@
 		491AA5961D2126A800E509F7 /* XXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXViewController.h; sourceTree = "<group>"; };
 		491AA5971D2126A800E509F7 /* XXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXViewController.m; sourceTree = "<group>"; };
 		491AA5991D21276200E509F7 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		491AA59A1D2205C500E509F7 /* XXTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XXTableViewCell.h; sourceTree = "<group>"; };
+		491AA59B1D2205C500E509F7 /* XXTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +171,8 @@
 				491AA5931D21247700E509F7 /* MainTabBarController.m */,
 				491AA5961D2126A800E509F7 /* XXViewController.h */,
 				491AA5971D2126A800E509F7 /* XXViewController.m */,
+				491AA59A1D2205C500E509F7 /* XXTableViewCell.h */,
+				491AA59B1D2205C500E509F7 /* XXTableViewCell.m */,
 			);
 			name = VC;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 				491AA5551D21202400E509F7 /* AppDelegate.m in Sources */,
 				491AA5911D2123F200E509F7 /* GankResult.m in Sources */,
 				491AA5981D2126A800E509F7 /* XXViewController.m in Sources */,
+				491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */,
 				491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */,
 				491AA5521D21202400E509F7 /* main.m in Sources */,
 			);

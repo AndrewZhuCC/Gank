@@ -7,6 +7,10 @@
 //
 
 #import "MainTabBarController.h"
+#import "XXViewController.h"
+
+@interface MainTabBarController () <UITabBarControllerDelegate>
+@end
 
 @implementation MainTabBarController
 
@@ -17,7 +21,12 @@
 }
 
 - (void)setupViewControllers {
-    
+    XXViewController *vc = [XXViewController new];
+    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
+    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"XX" image:nil tag:0];
+    vc.tabBarItem = item;
+    self.viewControllers = @[nvc];
+    self.delegate = self;
 }
 
 @end
