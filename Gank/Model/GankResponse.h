@@ -7,8 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@class GankResult;
+#import "GankResult.h"
 
 @interface GankResponse : NSObject
 - (instancetype)initWithResponse:(id)responseObj;

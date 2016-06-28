@@ -16,6 +16,7 @@
         _type = [dic objectForKey:@"type"];
         _url = [NSURL URLWithString:[dic objectForKey:@"url"]];
         _who = [dic objectForKey:@"who"];
+        _desc = [dic objectForKey:@"desc"];
     }
     return self;
 }

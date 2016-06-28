@@ -7,7 +7,6 @@
 //
 
 #import "GankResponse.h"
-#import "GankResult.h"
 
 @interface GankResponse()
 @property (strong, nonatomic) id responseObj;

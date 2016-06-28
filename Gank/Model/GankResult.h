@@ -14,6 +14,7 @@
 @property (copy, nonatomic) NSString *type;
 @property (strong, nonatomic) NSURL *url;
 @property (copy, nonatomic) NSString *who;
+@property (copy, nonatomic) NSString *desc;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 

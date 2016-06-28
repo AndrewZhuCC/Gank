@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IOSTableViewCell : UITableViewCell
+@class GankResult;
 
+@interface IOSTableViewCell : UITableViewCell
+- (void)configureCellWithEntity:(GankResult *)entity;
 @end
