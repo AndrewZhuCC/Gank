@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WebViewController : UIViewController
-
+@property (strong, nonatomic) NSURL *urlToLoad;
+@property (strong, nonatomic) NSString *htmlToLoad;
 @end

@@ -9,6 +9,7 @@
 #import "IOSViewController.h"
 #import "GankResponse.h"
 #import "IOSTableViewCell.h"
+#import "WebViewController.h"
 
 #import <Masonry/Masonry.h>
 #import <MJRefresh/MJRefresh.h>
@@ -58,6 +59,14 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.entitys.count == 0) {
+        [self.tableView.mj_footer beginRefreshing];
+    }
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
@@ -84,7 +93,6 @@
     [self.tableView registerClass:ios forCellReuseIdentifier:NSStringFromClass(ios)];
     
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getEntityFromNet)];
-    [self.tableView.mj_footer beginRefreshing];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -109,6 +117,16 @@
         IOSTableViewCell *mycell = cell;
         [mycell configureCellWithEntity:entity];
     }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GankResult *entity = self.entitys[indexPath.row];
+    if (entity.url) {
+        WebViewController *webVC = WebViewController.new;
+        webVC.urlToLoad = entity.url;
+        [self.navigationController pushViewController:webVC animated:YES];
+    }
 }
 
 @end

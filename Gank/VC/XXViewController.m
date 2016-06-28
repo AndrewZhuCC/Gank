@@ -20,6 +20,7 @@
 @property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<GankResult *> *entitys;
 @property (assign, nonatomic) NSInteger page;
+@property (strong, nonatomic) NSURLSessionDataTask *task;
 @end
 
 @implementation XXViewController
@@ -60,6 +61,24 @@
                                   [self.tableView.mj_footer endRefreshing];
                                   NSLog(@"get error:%@", error);
                               }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.entitys.count == 0) {
+        [self.tableView.mj_footer beginRefreshing];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    if (self.task.state == NSURLSessionTaskStateRunning) {
+        [self.task cancel];
+        self.task = nil;
+        [self.tableView.mj_footer endRefreshing];
+    }
 }
 
 #pragma mark - TableView
