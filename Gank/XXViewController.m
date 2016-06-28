@@ -14,6 +14,7 @@
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
 #import <UITableView+FDTemplateLayoutCell.h>
+#import <MJRefresh/MJRefresh.h>
 
 @interface XXViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) UITableView *tableView;
@@ -27,7 +28,7 @@
     [super viewDidLoad];
     self.entitys = NSMutableArray.new;
     self.page = 1;
-    [self getEntitysFromNet];
+//    [self getEntitysFromNet];
     [self configureTableView];
 }
 
@@ -36,6 +37,7 @@
     urlComponets.scheme = @"http";
     urlComponets.host = @"gank.io";
     urlComponets.path = [NSString stringWithFormat:@"/api/data/福利/10/%@", @(self.page)];
+    NSLog(@"Start get entity with page:%@", @(self.page));
     [AFHTTPSessionManager.manager GET:urlComponets.string
                            parameters:nil
                              progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -43,6 +45,7 @@
                                  NSLog(@"download additional description:%@", downloadProgress.localizedAdditionalDescription);
                              }
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                                  [self.tableView.mj_footer endRefreshing];
                                   GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
                                   NSArray *entitys = [response resultFromResponse];
                                   if (entitys) {
@@ -54,6 +57,7 @@
                                   }
                               }
                               failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                                  [self.tableView.mj_footer endRefreshing];
                                   NSLog(@"get error:%@", error);
                               }];
 }
@@ -63,6 +67,7 @@
 - (void)configureTableView {
     UITableView *tableview = [[UITableView alloc]init];
     self.tableView = tableview;
+    self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:XXTableViewCell.class forCellReuseIdentifier:NSStringFromClass(XXTableViewCell.class)];
@@ -70,6 +75,8 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getEntitysFromNet)];
+    [self.tableView.mj_footer beginRefreshing];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
