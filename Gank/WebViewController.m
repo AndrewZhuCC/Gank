@@ -89,6 +89,7 @@
     if (object == self.webView && [keyPath isEqualToString:@"estimatedProgress"]) {
         NSLog(@"current progress:%@", @(self.webView.estimatedProgress));
         [self.navigationController setProgress:self.webView.estimatedProgress animated:YES];
+        self.title = self.webView.title;
         if (self.webView.estimatedProgress == 1) {
             [self.navigationController cancelProgress];
         }

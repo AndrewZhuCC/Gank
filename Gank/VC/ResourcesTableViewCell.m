@@ -36,10 +36,14 @@
         _lbWho = UILabel.new;
         _lbWho.textAlignment = NSTextAlignmentRight;
         _lbWho.font = [UIFont systemFontOfSize:12];
-        _lbWho.textColor = [UIColor lightGrayColor];
+        _lbWho.textColor = [UIColor grayColor];
         _lbDesc.numberOfLines = 0;
         _lbDesc.font = [UIFont systemFontOfSize:17];
         _lbDesc.textColor = [UIColor blackColor];
+        _lbWho.backgroundColor = [UIColor clearColor];
+        _lbDesc.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor clearColor];
+        [self.contentView setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:_lbDesc];
         [self.contentView addSubview:_lbWho];
     }
@@ -53,14 +57,14 @@
 - (void)updateConstraints {
     UIView *contentView = self.contentView;
     [self.lbDesc mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(contentView.mas_top).with.offset(5);
-        make.left.equalTo(contentView.mas_left).with.offset(5);
-        make.right.equalTo(contentView.mas_right).with.offset(-5);
-        make.bottom.equalTo(self.lbWho.mas_top).with.offset(-5);
+        make.top.equalTo(contentView.mas_top).with.offset(8);
+        make.left.equalTo(contentView.mas_left).with.offset(8);
+        make.right.equalTo(contentView.mas_right).with.offset(-8);
+        make.bottom.equalTo(self.lbWho.mas_top).with.offset(-8);
     }];
     [self.lbWho mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(contentView.mas_right).with.offset(-5);
-        make.bottom.equalTo(contentView.mas_bottom).with.offset(-5);
+        make.bottom.equalTo(contentView.mas_bottom).with.offset(-8);
     }];
     
     [super updateConstraints];

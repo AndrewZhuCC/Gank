@@ -34,6 +34,9 @@
     self.page = 1;
     
     [self configureTableView];
+    [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.8 alpha:0.7]];
+    [self.view setBackgroundColor:UIColorFromRGB_A(0x00f5ff, 1)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,7 +61,7 @@
 
 - (void)getEntitysFromNet {
     if (self.entitys.count == 0) {
-        [SVProgressHUD show];
+        [SVProgressHUD showProgress:0];
     }
     NSURLComponents *urlComponets = NSURLComponents.new;
     urlComponets.scheme = @"http";
@@ -69,6 +72,9 @@
                            parameters:nil
                              progress:^(NSProgress * _Nonnull downloadProgress) {
                                  NSLog(@"download additional description:%@", downloadProgress.localizedAdditionalDescription);
+                                 if (self.entitys.count == 0) {
+                                     [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
+                                 }
                              }
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                   [self.tableView.mj_footer endRefreshing];
@@ -76,9 +82,13 @@
                                   GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
                                   NSArray *entitys = [response resultOfDaily];
                                   if (entitys) {
+                                      BOOL empty = self.entitys.count == 0;
                                       [_entitys addObjectsFromArray:entitys];
                                       _page ++;
                                       [self.tableView reloadData];
+                                      if (empty) {
+                                          [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                                      }
                                   } else {
                                       NSLog(@"empty entitys: %@", responseObject);
                                   }
@@ -110,6 +120,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:ResourcesTableViewCell.class forCellReuseIdentifier:NSStringFromClass(ResourcesTableViewCell.class)];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);

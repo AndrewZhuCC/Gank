@@ -32,11 +32,14 @@
     self.page = 1;
 //    [self getEntitysFromNet];
     [self configureTableView];
+    [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:1 green:0.5 blue:0 alpha:0.7]];
+    [self.view setBackgroundColor:[UIColor colorWithRed:1 green:0.5 blue:0 alpha:0.7]];
 }
 
 - (void)getEntitysFromNet {
     if (self.entitys.count == 0) {
-        [SVProgressHUD show];
+        [SVProgressHUD showProgress:0];
     }
     NSURLComponents *urlComponets = NSURLComponents.new;
     urlComponets.scheme = @"http";
@@ -46,6 +49,9 @@
     [AFHTTPSessionManager.manager GET:urlComponets.string
                            parameters:nil
                              progress:^(NSProgress * _Nonnull downloadProgress) {
+                                 if (self.entitys.count == 0) {
+                                     [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
+                                 }
                                  NSLog(@"download additional description:%@", downloadProgress.localizedAdditionalDescription);
                              }
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -100,10 +106,12 @@
     UITableView *tableview = [[UITableView alloc]init];
     self.tableView = tableview;
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:XXTableViewCell.class forCellReuseIdentifier:NSStringFromClass(XXTableViewCell.class)];
     [self.view addSubview:self.tableView];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];

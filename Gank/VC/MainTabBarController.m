@@ -31,19 +31,19 @@
     
     XXViewController *vc = XXViewController.new;
     UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
-    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Gank"] tag:++tag];
+    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"OOXX" image:[UIImage imageNamed:@"Gank"] tag:++tag];
     nvc.tabBarItem = item;
     [vcs addObject:nvc];
     
     ResourcesViewController *ivc = ResourcesViewController .new;
     UINavigationController *invc = [[UINavigationController alloc]initWithRootViewController:ivc];
-    UITabBarItem *iitem = [[UITabBarItem alloc]initWithTitle:nil image:[UIImage imageNamed:@"iOS"] tag:++tag];
+    UITabBarItem *iitem = [[UITabBarItem alloc]initWithTitle:@"Resources" image:[UIImage imageNamed:@"iOS"] tag:++tag];
     invc.tabBarItem = iitem;
     [vcs addObject:invc];
     
     DailyViewController *dvc = DailyViewController.new;
     UINavigationController *dnvc = [[UINavigationController alloc] initWithRootViewController:dvc];
-    UITabBarItem *ditem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Daily"] tag:++tag];
+    UITabBarItem *ditem = [[UITabBarItem alloc] initWithTitle:@"Daily" image:[UIImage imageNamed:@"Daily"] tag:++tag];
     dnvc.tabBarItem = ditem;
     [vcs addObject:dnvc];
     

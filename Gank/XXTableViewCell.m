@@ -53,6 +53,7 @@
     UIView *contentView = self.contentView;
     
     contentView.backgroundColor = [UIColor clearColor];
+    self.backgroundColor = [UIColor clearColor];
     _imgView = UIImageView.new;
     [contentView addSubview:_imgView];
     

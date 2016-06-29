@@ -66,10 +66,12 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
     // Do any additional setup after loading the view.
     self.page = 1;
     self.entitys = NSMutableArray.new;
-    self.view.backgroundColor = [UIColor whiteColor];
     self.currentUrl = self.urls[0];
     [self configureDropdownMenu];
     [self configureTableView];
+    [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.7]];
+    self.view.backgroundColor = UIColorFromRGB_A(0x98f5ff, 1);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,19 +81,26 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
 
 - (void)getEntityFromNet {
     if (self.entitys.count == 0) {
-        [SVProgressHUD show];
+        [SVProgressHUD showProgress:0];
     }
     self.task = [AFHTTPSessionManager.manager GET:[NSString stringWithFormat:@"%@%@", self.currentUrl, @(self.page)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"ios progress:%@", [downloadProgress localizedAdditionalDescription]);
+        if (self.entitys.count == 0) {
+            [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
+        }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.tableView.mj_footer endRefreshing];
         [SVProgressHUD dismiss];
         GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
         NSArray *results = [response resultFromResponse];
         if (results) {
+            BOOL empty = self.entitys.count == 0;
             [self.entitys addObjectsFromArray:results];
             [self.tableView reloadData];
             self.page ++;
+            if (empty) {
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+            }
         } else {
             NSLog(@"Empty results from ios:%@", responseObject);
         }
