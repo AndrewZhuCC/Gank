@@ -45,6 +45,25 @@
         if (![[_responseObj objectForKey:@"error"] boolValue]) {
             NSDictionary *tempResults = [_responseObj objectForKey:@"results"];
             NSArray *category = [_responseObj objectForKey:@"category"];
+            
+            NSMutableArray *mcategory = [category mutableCopy];
+            NSString *fl = nil;
+            for (NSString *key in mcategory) {
+                if ([key isEqualToString:@"福利"]) {
+                    fl = key;
+                    break;
+                }
+            }
+            
+            if (fl) {
+                [mcategory removeObject:fl];
+                NSArray *temp = [mcategory copy];
+                [mcategory removeAllObjects];
+                [mcategory addObject:fl];
+                [mcategory addObjectsFromArray:temp];
+                category = [mcategory copy];
+            }
+            
             if ([tempResults isKindOfClass:[NSDictionary class]] && [category isKindOfClass:[NSArray class]]) {
                 NSMutableDictionary *mresults = NSMutableDictionary.new;
                 for (NSString *key in category) {
