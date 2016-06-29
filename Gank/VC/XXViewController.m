@@ -52,7 +52,7 @@
                                  if (self.entitys.count == 0) {
                                      [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
                                  }
-                                 NSLog(@"download additional description:%@", downloadProgress.localizedAdditionalDescription);
+                                 NSLog(@"ooxx progress:%@", downloadProgress.localizedAdditionalDescription);
                              }
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                   [self.tableView.mj_footer endRefreshing];

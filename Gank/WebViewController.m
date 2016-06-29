@@ -51,16 +51,15 @@
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
     [self.webView removeObserver:self forKeyPath:@"loading"];
     [self.navigationController cancelProgress];
+    [self.webView stopLoading];
 }
 
 - (void)backGestureRecognized:(UIPanGestureRecognizer *)gr {
     if (gr.state == UIGestureRecognizerStateRecognized) {
         if (self.webView.canGoBack && [gr velocityInView:self.webView].x > 0) {
             [self.webView goBack];
-            NSLog(@"webview go back");
         } else if (self.webView.canGoForward && [gr velocityInView:self.webView].x < 0) {
             [self.webView goForward];
-            NSLog(@"webview go forward");
         }
     }
 }
@@ -87,7 +86,6 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if (object == self.webView && [keyPath isEqualToString:@"estimatedProgress"]) {
-        NSLog(@"current progress:%@", @(self.webView.estimatedProgress));
         [self.navigationController setProgress:self.webView.estimatedProgress animated:YES];
         self.title = self.webView.title;
         if (self.webView.estimatedProgress == 1) {

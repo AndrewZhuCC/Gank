@@ -92,7 +92,7 @@
     [AFHTTPSessionManager.manager GET:urlss
                            parameters:nil
                              progress:^(NSProgress * _Nonnull downloadProgress) {
-                                 NSLog(@"download additional description:%@", downloadProgress.localizedAdditionalDescription);
+                                 NSLog(@"daily progress:%@", downloadProgress.localizedAdditionalDescription);
                                  if (!self.entity) {
                                      [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
                                  }
@@ -103,7 +103,7 @@
                                   [SVProgressHUD dismiss];
                                   GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
                                   self.entity = [response resultOfDaily];
-                                  self.title = self.days[self.page];
+                                  self.navigationItem.title = self.days[self.page];
                                   self.page ++;
                                   [self.tableView reloadData];
                                   [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:YES];
@@ -228,12 +228,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    GankDaily *entity = self.entitys[indexPath.row];
-//    if (entity.content.length > 0) {
-//        WebViewController *webVC = WebViewController.new;
-//        webVC.htmlToLoad = entity.content;
-//        [self.navigationController pushViewController:webVC animated:YES];
-//    }
+    if ([self.entity.category[indexPath.section] isEqualToString:@"福利"]) {
+        return;
+    }
+    NSString *key = self.entity.category[indexPath.section];
+    GankResult *entity = [self.entity.results objectForKey:key][indexPath.row];
+    WebViewController *webVC = WebViewController.new;
+    webVC.urlToLoad = entity.url;
+    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
