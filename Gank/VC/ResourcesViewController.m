@@ -1,5 +1,5 @@
 //
-//  IOSViewController.m
+//  ResourcesViewController.m
 //  Gank
 //
 //  Created by 朱安智 on 16/6/28.
@@ -8,7 +8,7 @@
 
 #import "ResourcesViewController.h"
 #import "GankResponse.h"
-#import "IOSTableViewCell.h"
+#import "ResourcesTableViewCell.h"
 #import "WebViewController.h"
 
 #import <Masonry/Masonry.h>
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
 @property (strong, nonatomic) IGLDropDownMenu *menu;
 @end
 
-@implementation IOSViewController
+@implementation ResourcesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -184,7 +184,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
     self.tableView.dataSource = self;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-    Class ios = IOSTableViewCell.class;
+    Class ios = ResourcesTableViewCell.class;
     [self.tableView registerClass:ios forCellReuseIdentifier:NSStringFromClass(ios)];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -203,7 +203,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    IOSTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(IOSTableViewCell.class) forIndexPath:indexPath];
+    ResourcesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ResourcesTableViewCell.class) forIndexPath:indexPath];
     GankResult *entity = self.entitys[indexPath.row];
     [cell configureCellWithEntity:entity];
     
@@ -212,8 +212,8 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     GankResult *entity = self.entitys[indexPath.row];
-    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass(IOSTableViewCell.class) configuration:^(id cell) {
-        IOSTableViewCell *mycell = cell;
+    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass(ResourcesTableViewCell.class) configuration:^(id cell) {
+        ResourcesTableViewCell *mycell = cell;
         [mycell configureCellWithEntity:entity];
     }];
 }

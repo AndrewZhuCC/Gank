@@ -46,7 +46,6 @@
     [AFHTTPSessionManager.manager GET:urlComponets.string
                            parameters:nil
                              progress:^(NSProgress * _Nonnull downloadProgress) {
-                                 NSLog(@"download description:%@", downloadProgress.localizedDescription);
                                  NSLog(@"download additional description:%@", downloadProgress.localizedAdditionalDescription);
                              }
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

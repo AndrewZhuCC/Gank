@@ -40,4 +40,23 @@
     return nil;
 }
 
+- (NSArray<GankDaily *> *)resultOfDaily {
+    if ([_responseObj isKindOfClass:NSDictionary.class]) {
+        if (![[_responseObj objectForKey:@"error"] boolValue]) {
+            NSArray *dics = [_responseObj objectForKey:@"results"];
+            if ([dics isKindOfClass:NSArray.class]) {
+                NSMutableArray *result = NSMutableArray.new;
+                for (NSDictionary *dic in dics) {
+                    if ([dic isKindOfClass:NSDictionary.class]) {
+                        GankDaily *obj = [[GankDaily alloc] initWithDictionary:dic];
+                        [result addObject:obj];
+                    }
+                }
+                return [result copy];
+            }
+        }
+    }
+    return nil;
+}
+
 @end

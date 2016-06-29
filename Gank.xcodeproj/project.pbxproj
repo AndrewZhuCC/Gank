@@ -17,12 +17,14 @@
 		491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5931D21247700E509F7 /* MainTabBarController.m */; };
 		491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA59B1D2205C500E509F7 /* XXTableViewCell.m */; };
 		491AA59F1D22137700E509F7 /* GankResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA59E1D22137700E509F7 /* GankResponse.m */; };
-		49F4F7321D227CE500C28E7F /* IOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F72F1D227CE500C28E7F /* IOSViewController.m */; };
+		49F4F7321D227CE500C28E7F /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F72F1D227CE500C28E7F /* ResourcesViewController.m */; };
 		49F4F7331D227CE500C28E7F /* XXViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7311D227CE500C28E7F /* XXViewController.m */; };
 		49F4F7351D229C9F00C28E7F /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F4F7341D229C9F00C28E7F /* WebKit.framework */; };
-		49F4F7381D22A2B500C28E7F /* IOSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7371D22A2B500C28E7F /* IOSTableViewCell.m */; };
+		49F4F7381D22A2B500C28E7F /* ResourcesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7371D22A2B500C28E7F /* ResourcesTableViewCell.m */; };
 		49F4F73B1D22A8BF00C28E7F /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F73A1D22A8BF00C28E7F /* WebViewController.m */; };
 		49F4F73F1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F73E1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m */; };
+		49F4F74A1D2388FC00C28E7F /* DailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7491D2388FC00C28E7F /* DailyViewController.m */; };
+		49F4F74D1D2389A200C28E7F /* GankDaily.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F74C1D2389A200C28E7F /* GankDaily.m */; };
 		5C4BA58A0221AF463BB181A9 /* libPods-Gank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */; };
 /* End PBXBuildFile section */
 
@@ -69,17 +71,21 @@
 		491AA59B1D2205C500E509F7 /* XXTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XXTableViewCell.m; sourceTree = "<group>"; };
 		491AA59D1D22137700E509F7 /* GankResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GankResponse.h; sourceTree = "<group>"; };
 		491AA59E1D22137700E509F7 /* GankResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankResponse.m; sourceTree = "<group>"; };
-		49F4F72E1D227CE500C28E7F /* IOSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSViewController.h; path = VC/IOSViewController.h; sourceTree = "<group>"; };
-		49F4F72F1D227CE500C28E7F /* IOSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSViewController.m; path = VC/IOSViewController.m; sourceTree = "<group>"; };
+		49F4F72E1D227CE500C28E7F /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcesViewController.h; path = VC/ResourcesViewController.h; sourceTree = "<group>"; };
+		49F4F72F1D227CE500C28E7F /* ResourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResourcesViewController.m; path = VC/ResourcesViewController.m; sourceTree = "<group>"; };
 		49F4F7301D227CE500C28E7F /* XXViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XXViewController.h; path = VC/XXViewController.h; sourceTree = "<group>"; };
 		49F4F7311D227CE500C28E7F /* XXViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XXViewController.m; path = VC/XXViewController.m; sourceTree = "<group>"; };
 		49F4F7341D229C9F00C28E7F /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		49F4F7361D22A2B500C28E7F /* IOSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOSTableViewCell.h; path = VC/IOSTableViewCell.h; sourceTree = "<group>"; };
-		49F4F7371D22A2B500C28E7F /* IOSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IOSTableViewCell.m; path = VC/IOSTableViewCell.m; sourceTree = "<group>"; };
+		49F4F7361D22A2B500C28E7F /* ResourcesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcesTableViewCell.h; path = VC/ResourcesTableViewCell.h; sourceTree = "<group>"; };
+		49F4F7371D22A2B500C28E7F /* ResourcesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResourcesTableViewCell.m; path = VC/ResourcesTableViewCell.m; sourceTree = "<group>"; };
 		49F4F7391D22A8BF00C28E7F /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		49F4F73A1D22A8BF00C28E7F /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		49F4F73D1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+M13ProgressViewBar.h"; sourceTree = "<group>"; };
 		49F4F73E1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+M13ProgressViewBar.m"; sourceTree = "<group>"; };
+		49F4F7481D2388FC00C28E7F /* DailyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyViewController.h; sourceTree = "<group>"; };
+		49F4F7491D2388FC00C28E7F /* DailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyViewController.m; sourceTree = "<group>"; };
+		49F4F74B1D2389A200C28E7F /* GankDaily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GankDaily.h; sourceTree = "<group>"; };
+		49F4F74C1D2389A200C28E7F /* GankDaily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankDaily.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +187,8 @@
 				491AA5901D2123F200E509F7 /* GankResult.m */,
 				491AA59D1D22137700E509F7 /* GankResponse.h */,
 				491AA59E1D22137700E509F7 /* GankResponse.m */,
+				49F4F74B1D2389A200C28E7F /* GankDaily.h */,
+				49F4F74C1D2389A200C28E7F /* GankDaily.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,10 +202,12 @@
 				49F4F7311D227CE500C28E7F /* XXViewController.m */,
 				491AA59A1D2205C500E509F7 /* XXTableViewCell.h */,
 				491AA59B1D2205C500E509F7 /* XXTableViewCell.m */,
-				49F4F72E1D227CE500C28E7F /* IOSViewController.h */,
-				49F4F72F1D227CE500C28E7F /* IOSViewController.m */,
-				49F4F7361D22A2B500C28E7F /* IOSTableViewCell.h */,
-				49F4F7371D22A2B500C28E7F /* IOSTableViewCell.m */,
+				49F4F72E1D227CE500C28E7F /* ResourcesViewController.h */,
+				49F4F72F1D227CE500C28E7F /* ResourcesViewController.m */,
+				49F4F7361D22A2B500C28E7F /* ResourcesTableViewCell.h */,
+				49F4F7371D22A2B500C28E7F /* ResourcesTableViewCell.m */,
+				49F4F7481D2388FC00C28E7F /* DailyViewController.h */,
+				49F4F7491D2388FC00C28E7F /* DailyViewController.m */,
 				49F4F7391D22A8BF00C28E7F /* WebViewController.h */,
 				49F4F73A1D22A8BF00C28E7F /* WebViewController.m */,
 			);
@@ -415,9 +425,11 @@
 				49F4F73F1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m in Sources */,
 				49F4F73B1D22A8BF00C28E7F /* WebViewController.m in Sources */,
 				491AA5911D2123F200E509F7 /* GankResult.m in Sources */,
-				49F4F7321D227CE500C28E7F /* IOSViewController.m in Sources */,
+				49F4F7321D227CE500C28E7F /* ResourcesViewController.m in Sources */,
 				491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */,
-				49F4F7381D22A2B500C28E7F /* IOSTableViewCell.m in Sources */,
+				49F4F74D1D2389A200C28E7F /* GankDaily.m in Sources */,
+				49F4F74A1D2388FC00C28E7F /* DailyViewController.m in Sources */,
+				49F4F7381D22A2B500C28E7F /* ResourcesTableViewCell.m in Sources */,
 				49F4F7331D227CE500C28E7F /* XXViewController.m in Sources */,
 				491AA5941D21247700E509F7 /* MainTabBarController.m in Sources */,
 				491AA5521D21202400E509F7 /* main.m in Sources */,

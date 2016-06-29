@@ -1,5 +1,5 @@
 //
-//  IOSViewController.h
+//  ResourcesViewController.h
 //  Gank
 //
 //  Created by 朱安智 on 16/6/28.

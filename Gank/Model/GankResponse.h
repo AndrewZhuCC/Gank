@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "GankResult.h"
+#import "GankDaily.h"
 
 @interface GankResponse : NSObject
 - (instancetype)initWithResponse:(id)responseObj;
 - (NSArray<GankResult *> *)resultFromResponse;
+- (NSArray<GankDaily *> *)resultOfDaily;
 @end

@@ -8,7 +8,9 @@
 
 #import "MainTabBarController.h"
 #import "XXViewController.h"
-#import "IOSViewController.h"
+#import "ResourcesViewController.h"
+#import "WebViewController.h"
+#import "DailyViewController.h"
 
 @interface MainTabBarController () <UITabBarControllerDelegate>
 @end
@@ -29,15 +31,21 @@
     
     XXViewController *vc = XXViewController.new;
     UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
-    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"XX" image:[UIImage imageNamed:@"Gank"] tag:++tag];
+    UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Gank"] tag:++tag];
     nvc.tabBarItem = item;
     [vcs addObject:nvc];
     
-    IOSViewController *ivc = IOSViewController.new;
+    ResourcesViewController *ivc = ResourcesViewController .new;
     UINavigationController *invc = [[UINavigationController alloc]initWithRootViewController:ivc];
-    UITabBarItem *iitem = [[UITabBarItem alloc]initWithTitle:@"iOS" image:[UIImage imageNamed:@"iOS"] tag:++tag];
+    UITabBarItem *iitem = [[UITabBarItem alloc]initWithTitle:nil image:[UIImage imageNamed:@"iOS"] tag:++tag];
     invc.tabBarItem = iitem;
     [vcs addObject:invc];
+    
+    DailyViewController *dvc = DailyViewController.new;
+    UINavigationController *dnvc = [[UINavigationController alloc] initWithRootViewController:dvc];
+    UITabBarItem *ditem = [[UITabBarItem alloc] initWithTitle:nil image:[UIImage imageNamed:@"Daily"] tag:++tag];
+    dnvc.tabBarItem = ditem;
+    [vcs addObject:dnvc];
     
     self.viewControllers = vcs;
     self.delegate = self;

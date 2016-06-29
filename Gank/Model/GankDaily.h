@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface GankDaily : NSObject
+@property (strong, nonatomic) NSString *_id;
+@property (strong, nonatomic) NSString *title;
+@property (strong, nonatomic) NSString *content;
+@property (strong, nonatomic) NSString *timeStamp;
+
+- (instancetype)initWithDictionary:(NSDictionary *)dic;
 
 @end
