@@ -15,13 +15,14 @@
 #import <AFNetworking/AFNetworking.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <MJRefresh/MJRefresh.h>
-#import <SVProgressHUD/SVProgressHUD.h>
+#import "MBProgressHUD.h"
 
 @interface XXViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray<GankResult *> *entitys;
 @property (assign, nonatomic) NSInteger page;
 @property (strong, nonatomic) NSURLSessionDataTask *task;
+@property (strong, nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation XXViewController
@@ -35,11 +36,18 @@
     [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:1 green:0.5 blue:0 alpha:0.7]];
     [self.view setBackgroundColor:[UIColor colorWithRed:1 green:0.5 blue:0 alpha:0.7]];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.hud setRemoveFromSuperViewOnHide:NO];
+    [self.hud hide:NO];
 }
 
 - (void)getEntitysFromNet {
     if (self.entitys.count == 0) {
-        [SVProgressHUD showProgress:0];
+        self.hud.mode = MBProgressHUDModeDeterminate;
+        self.hud.progress = 0;
+        self.hud.labelText = nil;
+        [self.hud show:YES];
     }
     NSURLComponents *urlComponets = NSURLComponents.new;
     urlComponets.scheme = @"http";
@@ -50,13 +58,13 @@
                            parameters:nil
                              progress:^(NSProgress * _Nonnull downloadProgress) {
                                  if (self.entitys.count == 0) {
-                                     [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
+                                     self.hud.progress = (downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
                                  }
                                  NSLog(@"ooxx progress:%@", downloadProgress.localizedAdditionalDescription);
                              }
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                   [self.tableView.mj_footer endRefreshing];
-                                  [SVProgressHUD dismiss];
+                                  [self.hud hide:YES];
                                   GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
                                   NSArray *entitys = [response resultFromResponse];
                                   if (entitys) {
@@ -69,13 +77,13 @@
                               }
                               failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                   [self.tableView.mj_footer endRefreshing];
-                                  [SVProgressHUD dismiss];
+                                  [self.hud hide:YES];
                                   NSLog(@"get error:%@", error);
                                   if (error.code != -999) {
-                                      [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                                      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                          [SVProgressHUD dismiss];
-                                      });
+                                      self.hud.mode = MBProgressHUDModeText;
+                                      self.hud.labelText = error.localizedDescription;
+                                      [self.hud show:YES];
+                                      [self.hud hide:YES afterDelay:3];
                                   }
                               }];
 }
@@ -97,7 +105,7 @@
         [self.tableView.mj_footer endRefreshing];
     }
     
-    [SVProgressHUD dismiss];
+    [self.hud hide:NO];
 }
 
 #pragma mark - TableView

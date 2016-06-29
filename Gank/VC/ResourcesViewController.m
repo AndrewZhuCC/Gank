@@ -15,8 +15,8 @@
 #import <MJRefresh/MJRefresh.h>
 #import <AFNetworking/AFNetworking.h>
 #import <UITableView+FDTemplateLayoutCell/UITableView+FDTemplateLayoutCell.h>
-#import <SVProgressHUD/SVProgressHUD.h>
 #import <IGLDropDownMenu/IGLDropDownMenu.h>
+#import "MBProgressHUD.h"
 
 typedef NS_ENUM(NSUInteger, Resource_Type) {
     Resource_Type_IOS = 0,
@@ -57,6 +57,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
 @property (strong, nonatomic) NSArray *urls;
 @property (strong, nonatomic) NSString *currentUrl;
 @property (strong, nonatomic) IGLDropDownMenu *menu;
+@property (strong, nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation ResourcesViewController
@@ -72,6 +73,10 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
     [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.7]];
     self.view.backgroundColor = UIColorFromRGB_A(0x98f5ff, 1);
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self.hud setRemoveFromSuperViewOnHide:NO];
+    [self.hud hide:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,16 +86,19 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
 
 - (void)getEntityFromNet {
     if (self.entitys.count == 0) {
-        [SVProgressHUD showProgress:0];
+        self.hud.mode = MBProgressHUDModeDeterminate;
+        self.hud.progress = 0;
+        self.hud.labelText = nil;
+        [self.hud show:YES];
     }
     self.task = [AFHTTPSessionManager.manager GET:[NSString stringWithFormat:@"%@%@", self.currentUrl, @(self.page)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"ios progress:%@", [downloadProgress localizedAdditionalDescription]);
         if (self.entitys.count == 0) {
-            [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
+            self.hud.progress = (downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
         }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
+        [self.hud hide:YES];
         GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
         NSArray *results = [response resultFromResponse];
         if (results) {
@@ -106,13 +114,13 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.tableView.mj_footer endRefreshing];
-        [SVProgressHUD dismiss];
+        [self.hud hide:NO];
         NSLog(@"get result from ios error:%@", error);
         if (error.code != -999) {
-            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [SVProgressHUD dismiss];
-            });
+            self.hud.mode = MBProgressHUDModeText;
+            self.hud.labelText = error.localizedDescription;
+            [self.hud show:YES];
+            [self.hud hide:YES afterDelay:3];
         }
     }];
 }
@@ -141,7 +149,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
         self.task = nil;
         [self.tableView.mj_footer endRefreshing];
     }
-    [SVProgressHUD dismiss];
+    [self.hud hide:YES];
     [self.menu setHidden:YES];
 }
 

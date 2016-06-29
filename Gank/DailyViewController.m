@@ -17,11 +17,12 @@
 #import <AFNetworking/AFNetworking.h>
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <MJRefresh/MJRefresh.h>
-#import <SVProgressHUD/SVProgressHUD.h>
+#import "MBProgressHUD.h"
 
 @interface DailyViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) MBProgressHUD *hud;
 
 @property (strong, nonatomic) GankDaily *entity;
 @property (strong, nonatomic) NSURLSessionDataTask *task;
@@ -44,6 +45,10 @@
     [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.8 alpha:0.7]];
     [self.view setBackgroundColor:UIColorFromRGB_A(0x00f5ff, 1)];
+    
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
+    [self.hud setRemoveFromSuperViewOnHide:NO];
+    [self.hud hide:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,13 +59,15 @@
     }
     
     if (!self.days) {
-        [SVProgressHUD show];
+        self.hud.mode = MBProgressHUDModeIndeterminate;
+        self.hud.labelText = nil;
+        [self.hud show:YES];
         [NetwokManager daysOfHistoryWithBlock:^(NSArray *result, NSError *error) {
             if (error) {
-                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [SVProgressHUD dismiss];
-                });
+                self.hud.mode = MBProgressHUDModeText;
+                self.hud.labelText = error.localizedDescription;
+                [self.hud show:YES];
+                [self.hud hide:YES afterDelay:3];
             } else {
                 self.days = result;
                 self.canUpdate = YES;
@@ -80,12 +87,15 @@
         [self.tableView.mj_header endRefreshing];
     }
     
-    [SVProgressHUD dismiss];
+    [self.hud hide:NO];
 }
 
 - (void)commonNetworks {
     if (!self.entity) {
-        [SVProgressHUD showProgress:0];
+        self.hud.mode = MBProgressHUDModeDeterminate;
+        self.hud.progress = 0;
+        self.hud.labelText = nil;
+        [self.hud show:YES];
     }
     NSString *urlss = [NSString stringWithFormat:@"http://gank.io/api/day/%@", self.days[self.page]];
     NSLog(@"Start get daily entity with page:%@", @(self.page));
@@ -94,13 +104,13 @@
                              progress:^(NSProgress * _Nonnull downloadProgress) {
                                  NSLog(@"daily progress:%@", downloadProgress.localizedAdditionalDescription);
                                  if (!self.entity) {
-                                     [SVProgressHUD showProgress:(downloadProgress.completedUnitCount / downloadProgress.totalUnitCount)];
+                                     self.hud.progress = (downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
                                  }
                              }
                               success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                                   [self.tableView.mj_footer endRefreshing];
                                   [self.tableView.mj_header endRefreshing];
-                                  [SVProgressHUD dismiss];
+                                  [self.hud hide:YES];
                                   GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
                                   self.entity = [response resultOfDaily];
                                   self.navigationItem.title = self.days[self.page];
@@ -111,13 +121,13 @@
                               failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                                   [self.tableView.mj_footer endRefreshing];
                                   [self.tableView.mj_header endRefreshing];
-                                  [SVProgressHUD dismiss];
+                                  [self.hud hide:YES];
                                   NSLog(@"get error:%@", error);
                                   if (error.code != -999) {
-                                      [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-                                      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                                          [SVProgressHUD dismiss];
-                                      });
+                                      self.hud.mode = MBProgressHUDModeText;
+                                      self.hud.labelText = error.localizedDescription;
+                                      [self.hud show:YES];
+                                      [self.hud hide:YES afterDelay:3];
                                   }
                               }];
 }
