@@ -15,6 +15,7 @@
 #import <MJRefresh/MJRefresh.h>
 #import <AFNetworking/AFNetworking.h>
 #import <UITableView+FDTemplateLayoutCell/UITableView+FDTemplateLayoutCell.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface IOSViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
@@ -40,10 +41,14 @@
 }
 
 - (void)getEntityFromNet {
+    if (self.entitys.count == 0) {
+        [SVProgressHUD show];
+    }
     self.task = [AFHTTPSessionManager.manager GET:[NSString stringWithFormat:@"http://gank.io/api/data/iOS/20/%@", @(self.page)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
         NSLog(@"ios progress:%@", [downloadProgress localizedAdditionalDescription]);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.tableView.mj_footer endRefreshing];
+        [SVProgressHUD dismiss];
         GankResponse *response = [[GankResponse alloc] initWithResponse:responseObject];
         NSArray *results = [response resultFromResponse];
         if (results) {
@@ -55,7 +60,14 @@
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [self.tableView.mj_footer endRefreshing];
+        [SVProgressHUD dismiss];
         NSLog(@"get result from ios error:%@", error);
+        if (error.code != -999) {
+            [SVProgressHUD showErrorWithStatus:error.localizedDescription];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [SVProgressHUD dismiss];
+            });
+        }
     }];
 }
 
@@ -75,6 +87,7 @@
         self.task = nil;
         [self.tableView.mj_footer endRefreshing];
     }
+    [SVProgressHUD dismiss];
 }
 
 #pragma mark - TableView
