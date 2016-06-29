@@ -6,7 +6,7 @@
 //  Copyright © 2016年 朱安智. All rights reserved.
 //
 
-#import "IOSViewController.h"
+#import "ResourcesViewController.h"
 #import "GankResponse.h"
 #import "IOSTableViewCell.h"
 #import "WebViewController.h"
@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
 
 @end
 
-@interface IOSViewController () <UITableViewDelegate, UITableViewDataSource, IGLDropDownMenuDelegate>
+@interface ResourcesViewController () <UITableViewDelegate, UITableViewDataSource, IGLDropDownMenuDelegate>
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) NSInteger page;
 @property (strong, nonatomic) NSMutableArray<GankResult *> *entitys;

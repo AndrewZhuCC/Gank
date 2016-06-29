@@ -1,22 +1,23 @@
 //
-//  IOSTableViewCell.m
+//  ResourcesTableViewCell.m
 //  Gank
 //
 //  Created by 朱安智 on 16/6/28.
 //  Copyright © 2016年 朱安智. All rights reserved.
 //
 
-#import "IOSTableViewCell.h"
+#import "ResourcesTableViewCell.h"
 #import "GankResult.h"
+#import "GankDaily.h"
 
 #import <Masonry/Masonry.h>
 
-@interface IOSTableViewCell ()
+@interface ResourcesTableViewCell ()
 @property (strong, nonatomic) UILabel *lbDesc;
 @property (strong, nonatomic) UILabel *lbWho;
 @end
 
-@implementation IOSTableViewCell
+@implementation ResourcesTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -68,6 +69,11 @@
 - (void)configureCellWithEntity:(GankResult *)entity {
     self.lbDesc.text = entity.desc;
     self.lbWho.text = [NSString stringWithFormat:@"-- %@", entity.who];
+}
+
+- (void)configureCellWIthDailyEntity:(GankDaily *)entity {
+    self.lbDesc.text = entity.title;
+    self.lbWho.text = entity.timeStamp;
 }
 
 @end

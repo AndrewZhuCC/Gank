@@ -1,5 +1,5 @@
 //
-//  IOSTableViewCell.h
+//  IOSViewController.h
 //  Gank
 //
 //  Created by 朱安智 on 16/6/28.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class GankResult;
+@interface ResourcesViewController : UIViewController
 
-@interface IOSTableViewCell : UITableViewCell
-- (void)configureCellWithEntity:(GankResult *)entity;
 @end
