@@ -7,4 +7,5 @@ pod 'MJRefresh', '~> 3.1.9'
 pod 'SDWebImage', '~> 3.8.1'
 pod 'UITableView+FDTemplateLayoutCell', '~> 1.4'
 pod 'SVProgressHUD'
+pod 'IGLDropDownMenu'
 end

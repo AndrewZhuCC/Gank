@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - IGLDropDownMenu (1.5.0)
   - Masonry (1.0.1)
   - MJRefresh (3.1.9)
   - SDWebImage (3.8.1):
@@ -24,6 +25,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
+  - IGLDropDownMenu
   - Masonry
   - MJRefresh (~> 3.1.9)
   - SDWebImage (~> 3.8.1)
@@ -32,12 +34,13 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  IGLDropDownMenu: 1ce06c17b4846f784e2b610f90bd741ab2037f2c
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MJRefresh: c5f1f1653e5a1b932c90f78074f2bc86f3f9bd5e
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
   UITableView+FDTemplateLayoutCell: 234e1582bcc4e18461af91155123bb96538ed030
 
-PODFILE CHECKSUM: 229772fe55597f77d0e93fd7d7d4f6e1fdfd4b76
+PODFILE CHECKSUM: 27bb8b8312c8b595e016c534616ee86e8720722b
 
 COCOAPODS: 1.0.1
