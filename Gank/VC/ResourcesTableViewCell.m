@@ -76,7 +76,6 @@
 }
 
 - (void)configureCellWIthDailyEntity:(GankDaily *)entity {
-    self.lbDesc.text = entity.title;
     self.lbWho.text = entity.timeStamp;
 }
 

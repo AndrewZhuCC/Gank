@@ -13,5 +13,6 @@
 @interface GankResponse : NSObject
 - (instancetype)initWithResponse:(id)responseObj;
 - (NSArray<GankResult *> *)resultFromResponse;
-- (NSArray<GankDaily *> *)resultOfDaily;
+- (GankDaily *)resultOfDaily;
+- (NSArray *)resultOfDaysHistory;
 @end

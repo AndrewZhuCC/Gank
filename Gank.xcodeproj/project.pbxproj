@@ -25,6 +25,7 @@
 		49F4F73F1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F73E1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m */; };
 		49F4F74A1D2388FC00C28E7F /* DailyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7491D2388FC00C28E7F /* DailyViewController.m */; };
 		49F4F74D1D2389A200C28E7F /* GankDaily.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F74C1D2389A200C28E7F /* GankDaily.m */; };
+		49F4F7561D23AD4300C28E7F /* NetwokManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49F4F7551D23AD4300C28E7F /* NetwokManager.m */; };
 		5C4BA58A0221AF463BB181A9 /* libPods-Gank.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,8 @@
 		49F4F7491D2388FC00C28E7F /* DailyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyViewController.m; sourceTree = "<group>"; };
 		49F4F74B1D2389A200C28E7F /* GankDaily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GankDaily.h; sourceTree = "<group>"; };
 		49F4F74C1D2389A200C28E7F /* GankDaily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankDaily.m; sourceTree = "<group>"; };
+		49F4F7541D23AD4300C28E7F /* NetwokManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetwokManager.h; sourceTree = "<group>"; };
+		49F4F7551D23AD4300C28E7F /* NetwokManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetwokManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,8 @@
 				491AA59E1D22137700E509F7 /* GankResponse.m */,
 				49F4F74B1D2389A200C28E7F /* GankDaily.h */,
 				49F4F74C1D2389A200C28E7F /* GankDaily.m */,
+				49F4F7541D23AD4300C28E7F /* NetwokManager.h */,
+				49F4F7551D23AD4300C28E7F /* NetwokManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +431,7 @@
 				49F4F73B1D22A8BF00C28E7F /* WebViewController.m in Sources */,
 				491AA5911D2123F200E509F7 /* GankResult.m in Sources */,
 				49F4F7321D227CE500C28E7F /* ResourcesViewController.m in Sources */,
+				49F4F7561D23AD4300C28E7F /* NetwokManager.m in Sources */,
 				491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */,
 				49F4F74D1D2389A200C28E7F /* GankDaily.m in Sources */,
 				49F4F74A1D2388FC00C28E7F /* DailyViewController.m in Sources */,

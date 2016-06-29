@@ -40,19 +40,41 @@
     return nil;
 }
 
-- (NSArray<GankDaily *> *)resultOfDaily {
+- (GankDaily *)resultOfDaily {
+    if ([_responseObj isKindOfClass:NSDictionary.class]) {
+        if (![[_responseObj objectForKey:@"error"] boolValue]) {
+            NSDictionary *tempResults = [_responseObj objectForKey:@"results"];
+            NSArray *category = [_responseObj objectForKey:@"category"];
+            if ([tempResults isKindOfClass:[NSDictionary class]] && [category isKindOfClass:[NSArray class]]) {
+                NSMutableDictionary *mresults = NSMutableDictionary.new;
+                for (NSString *key in category) {
+                    NSArray *gankresults = [tempResults objectForKey:key];
+                    NSMutableArray *mganResults = NSMutableArray.new;
+                    for (NSDictionary *dic in gankresults) {
+                        GankResult *result = [[GankResult alloc] initWithDictionary:dic];
+                        [mganResults addObject:result];
+                    }
+                    [mresults setObject:[mganResults copy] forKey:key];
+                }
+                GankDaily *daily = [[GankDaily alloc] initWithDictionary:@{@"category":category, @"results":[mresults copy]}];
+                return daily;
+            }
+        }
+    }
+    return nil;
+}
+
+- (NSArray *)resultOfDaysHistory {
     if ([_responseObj isKindOfClass:NSDictionary.class]) {
         if (![[_responseObj objectForKey:@"error"] boolValue]) {
             NSArray *dics = [_responseObj objectForKey:@"results"];
             if ([dics isKindOfClass:NSArray.class]) {
-                NSMutableArray *result = NSMutableArray.new;
-                for (NSDictionary *dic in dics) {
-                    if ([dic isKindOfClass:NSDictionary.class]) {
-                        GankDaily *obj = [[GankDaily alloc] initWithDictionary:dic];
-                        [result addObject:obj];
-                    }
+                NSMutableArray *results = NSMutableArray.new;
+                for (NSString *data in dics) {
+                    NSString *date = [data stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
+                    [results addObject:date];
                 }
-                return [result copy];
+                return [results copy];
             }
         }
     }

@@ -7,6 +7,7 @@
 //
 
 #import "GankDaily.h"
+#import "GankResult.h"
 
 @interface GankDaily ()
 @end
@@ -15,11 +16,9 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic {
     if (self = [super init]) {
-        _title = [dic objectForKey:@"title"];
-        __id = [dic objectForKey:@"_id"];
-        _content = [dic objectForKey:@"content"];
-        NSString *dates = [dic objectForKey:@"publishedAt"];
-        _timeStamp = [[dates stringByReplacingOccurrencesOfString:@"T" withString:@" "] stringByReplacingOccurrencesOfString:@"Z" withString:@""];
+        _category = [dic objectForKey:@"category"];
+        _results = [dic objectForKey:@"results"];
+        _timeStamp = [dic objectForKey:@"time"];
     }
     return self;
 }

@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class GankResult;
+
 @interface GankDaily : NSObject
-@property (strong, nonatomic) NSString *_id;
-@property (strong, nonatomic) NSString *title;
-@property (strong, nonatomic) NSString *content;
-@property (strong, nonatomic) NSString *timeStamp;
+@property (copy, nonatomic) NSArray *category;
+@property (copy, nonatomic) NSDictionary<NSString *, NSArray<GankResult *> *> *results;
+@property (copy, nonatomic) NSString *timeStamp;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 
