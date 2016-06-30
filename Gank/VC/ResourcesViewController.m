@@ -89,6 +89,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
         self.hud.mode = MBProgressHUDModeDeterminate;
         self.hud.progress = 0;
         self.hud.labelText = nil;
+        self.hud.detailsLabelText = nil;
         [self.hud show:YES];
     }
     self.task = [AFHTTPSessionManager.manager GET:[NSString stringWithFormat:@"%@%@", self.currentUrl, @(self.page)] parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
@@ -118,7 +119,8 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
         NSLog(@"get result from ios error:%@", error);
         if (error.code != -999) {
             self.hud.mode = MBProgressHUDModeText;
-            self.hud.labelText = error.localizedDescription;
+            self.hud.labelText = error.domain;
+            self.hud.detailsLabelText = error.localizedDescription;
             [self.hud show:YES];
             [self.hud hide:YES afterDelay:3];
         }

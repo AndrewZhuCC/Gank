@@ -61,11 +61,13 @@
     if (!self.days) {
         self.hud.mode = MBProgressHUDModeIndeterminate;
         self.hud.labelText = nil;
+        self.hud.detailsLabelText = nil;
         [self.hud show:YES];
         [NetwokManager daysOfHistoryWithBlock:^(NSArray *result, NSError *error) {
             if (error) {
                 self.hud.mode = MBProgressHUDModeText;
-                self.hud.labelText = error.localizedDescription;
+                self.hud.labelText = error.domain;
+                self.hud.detailsLabelText = error.localizedDescription;
                 [self.hud show:YES];
                 [self.hud hide:YES afterDelay:3];
             } else {
@@ -95,6 +97,7 @@
         self.hud.mode = MBProgressHUDModeDeterminate;
         self.hud.progress = 0;
         self.hud.labelText = nil;
+        self.hud.detailsLabelText = nil;
         [self.hud show:YES];
     }
     NSString *urlss = [NSString stringWithFormat:@"http://gank.io/api/day/%@", self.days[self.page]];
@@ -125,7 +128,8 @@
                                   NSLog(@"get error:%@", error);
                                   if (error.code != -999) {
                                       self.hud.mode = MBProgressHUDModeText;
-                                      self.hud.labelText = error.localizedDescription;
+                                      self.hud.labelText = error.domain;
+                                      self.hud.detailsLabelText = error.localizedDescription;
                                       [self.hud show:YES];
                                       [self.hud hide:YES afterDelay:3];
                                   }
