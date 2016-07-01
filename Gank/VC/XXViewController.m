@@ -22,7 +22,6 @@
 @interface XXViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) MBProgressHUD *hud;
-@property (strong, nonatomic) FullScreenImageViewer *imageViewer;
 
 @property (strong, nonatomic) NSMutableArray<GankResult *> *entitys;
 @property (strong, nonatomic) NSURLSessionDataTask *task;
@@ -176,7 +175,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     XXTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    CGRect rect = [[UIApplication sharedApplication].keyWindow convertRect:cell.imgView.frame fromView:cell.imgView.superview];
     CGRect rect = [cell.imgView.superview convertRect:cell.imgView.frame toView:[UIApplication sharedApplication].keyWindow];
     [FullScreenImageViewer showImageFromRect:rect image:cell.imgView.image];
 }

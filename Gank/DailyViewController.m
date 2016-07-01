@@ -12,6 +12,7 @@
 #import "XXTableViewCell.h"
 #import "WebViewController.h"
 #import "NetwokManager.h"
+#import "FullScreenImageViewer.h"
 
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
@@ -243,6 +244,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if ([self.entity.category[indexPath.section] isEqualToString:@"福利"]) {
+        XXTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect rect = [cell.imgView.superview convertRect:cell.imgView.frame toView:[UIApplication sharedApplication].keyWindow];
+        [FullScreenImageViewer showImageFromRect:rect image:cell.imgView.image];
         return;
     }
     NSString *key = self.entity.category[indexPath.section];
