@@ -94,7 +94,7 @@
 - (void)updateConstraints {
     CGFloat imgHeight = 40;
     if (self.imgView.image) {
-        CGFloat scale = (UIScreen.mainScreen.bounds.size.width - 16 - 10) / self.imgView.image.size.width;
+        CGFloat scale = (UIScreen.mainScreen.bounds.size.width - 10) / self.imgView.image.size.width;
         imgHeight = round(self.imgView.image.size.height * scale);
     }
     [_imgView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -138,7 +138,7 @@
     [self.lbAuthor setText:entity.who];
     [self refreshButtonImgWithEntity:entity];
     __weak typeof(self) wself = self;
-    [self.imgView sd_setImageWithURL:entity.url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.imgView sd_setImageWithURL:entity.url placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         typeof(wself) sself = wself;
         if (image && sself) {
             sself.imgView.image = image;
@@ -155,7 +155,7 @@
 - (void)configureTemplateWithEntity:(GankResult *)entity {
     [self.lbAuthor setText:entity.who];
     __weak typeof(self) wself = self;
-    [self.imgView sd_setImageWithURL:entity.url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.imgView sd_setImageWithURL:entity.url placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         typeof(wself) sself = wself;
         if (image && sself) {
             sself.imgView.image = image;
