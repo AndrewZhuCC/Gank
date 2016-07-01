@@ -13,6 +13,7 @@
 typedef GankResult *(^ButtonCollectionAction)(UIButton *button);
 
 @interface XXTableViewCell : UITableViewCell
+@property (readonly, strong, nonatomic) UIImageView *imgView;
 - (void)configureCellWithEntity:(GankResult *)entity completionBlock:(void(^)())completion;
 - (void)configureTemplateWithEntity:(GankResult *)entity;
 - (void)setCollectionButtonAction:(ButtonCollectionAction)action;

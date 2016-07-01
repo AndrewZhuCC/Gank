@@ -14,7 +14,7 @@
 #import <Masonry/Masonry.h>
 
 @interface XXTableViewCell ()
-@property (strong, nonatomic) UIImageView *imgView;
+@property (readwrite, strong, nonatomic) UIImageView *imgView;
 @property (strong, nonatomic) UILabel *lbAuthor;
 @property (strong, nonatomic) UIButton *btnCollection;
 

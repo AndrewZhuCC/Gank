@@ -12,6 +12,7 @@
 		4907453D1D260BBE00CF7274 /* GankResultDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4907453B1D260BBE00CF7274 /* GankResultDB.m */; };
 		490745401D260C4E00CF7274 /* GankURLTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4907453F1D260C4E00CF7274 /* GankURLTransformer.m */; };
 		490745431D260D5E00CF7274 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 490745421D260D5E00CF7274 /* CoreDataManager.m */; };
+		490745461D2639B100CF7274 /* FullScreenImageViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = 490745451D2639B100CF7274 /* FullScreenImageViewer.m */; };
 		491AA5521D21202400E509F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5511D21202400E509F7 /* main.m */; };
 		491AA5551D21202400E509F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5541D21202400E509F7 /* AppDelegate.m */; };
 		491AA55D1D21202400E509F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491AA55C1D21202400E509F7 /* Assets.xcassets */; };
@@ -64,6 +65,8 @@
 		4907453F1D260C4E00CF7274 /* GankURLTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankURLTransformer.m; sourceTree = "<group>"; };
 		490745411D260D5E00CF7274 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
 		490745421D260D5E00CF7274 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		490745441D2639B100CF7274 /* FullScreenImageViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenImageViewer.h; sourceTree = "<group>"; };
+		490745451D2639B100CF7274 /* FullScreenImageViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenImageViewer.m; sourceTree = "<group>"; };
 		491AA54D1D21202400E509F7 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491AA5511D21202400E509F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		491AA5531D21202400E509F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -226,6 +229,8 @@
 			children = (
 				491AA5921D21247700E509F7 /* MainTabBarController.h */,
 				491AA5931D21247700E509F7 /* MainTabBarController.m */,
+				490745441D2639B100CF7274 /* FullScreenImageViewer.h */,
+				490745451D2639B100CF7274 /* FullScreenImageViewer.m */,
 				49F4F7301D227CE500C28E7F /* XXViewController.h */,
 				49F4F7311D227CE500C28E7F /* XXViewController.m */,
 				491AA59A1D2205C500E509F7 /* XXTableViewCell.h */,
@@ -459,6 +464,7 @@
 				49F4F7321D227CE500C28E7F /* ResourcesViewController.m in Sources */,
 				49F4F7561D23AD4300C28E7F /* NetwokManager.m in Sources */,
 				4907453C1D260BBE00CF7274 /* GankResultDB+CoreDataProperties.m in Sources */,
+				490745461D2639B100CF7274 /* FullScreenImageViewer.m in Sources */,
 				491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */,
 				4907453D1D260BBE00CF7274 /* GankResultDB.m in Sources */,
 				49F4F74D1D2389A200C28E7F /* GankDaily.m in Sources */,

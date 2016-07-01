@@ -11,6 +11,7 @@
 #import "GankResult.h"
 #import "GankResponse.h"
 #import "CoreDataManager.h"
+#import "FullScreenImageViewer.h"
 
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
@@ -20,10 +21,12 @@
 
 @interface XXViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray<GankResult *> *entitys;
-@property (assign, nonatomic) NSInteger page;
-@property (strong, nonatomic) NSURLSessionDataTask *task;
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) FullScreenImageViewer *imageViewer;
+
+@property (strong, nonatomic) NSMutableArray<GankResult *> *entitys;
+@property (strong, nonatomic) NSURLSessionDataTask *task;
+@property (assign, nonatomic) NSInteger page;
 @end
 
 @implementation XXViewController
@@ -167,6 +170,15 @@
         XXTableViewCell *mycell = (XXTableViewCell *)cell;
         [mycell configureTemplateWithEntity:entity];
     }];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    XXTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    CGRect rect = [[UIApplication sharedApplication].keyWindow convertRect:cell.imgView.frame fromView:cell.imgView.superview];
+    CGRect rect = [cell.imgView.superview convertRect:cell.imgView.frame toView:[UIApplication sharedApplication].keyWindow];
+    [FullScreenImageViewer showImageFromRect:rect image:cell.imgView.image];
 }
 
 @end
