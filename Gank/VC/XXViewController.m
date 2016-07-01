@@ -176,7 +176,11 @@
     
     XXTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     CGRect rect = [cell.imgView.superview convertRect:cell.imgView.frame toView:[UIApplication sharedApplication].keyWindow];
-    [FullScreenImageViewer showImageFromRect:rect image:cell.imgView.image];
+    [[FullScreenImageViewer showImageFromRect:rect image:cell.imgView.image] setToRect:^CGRect{
+        XXTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        CGRect rect = [cell.imgView.superview convertRect:cell.imgView.frame toView:[UIApplication sharedApplication].keyWindow];
+        return rect;
+    }];
 }
 
 @end

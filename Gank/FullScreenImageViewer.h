@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef CGRect(^ToRectBlock)();
+
 @interface FullScreenImageViewer : UIView
+
 + (FullScreenImageViewer *)showImageFromRect:(CGRect)rect image:(UIImage *)image;
+- (void)setToRect:(ToRectBlock)block;
+
 @end
