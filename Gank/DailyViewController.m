@@ -13,6 +13,7 @@
 #import "WebViewController.h"
 #import "NetwokManager.h"
 #import "FullScreenImageViewer.h"
+#import "CoreDataManager.h"
 
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
@@ -216,6 +217,15 @@
             if ([visible containsObject:cell]) {
                 [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             }
+        }];
+        [(XXTableViewCell *)cell setCollectionButtonAction:^GankResult *(UIButton *button) {
+            GankResult *dbentity = [CoreDataManager entityByID:xxentity._id];
+            if (dbentity) {
+                [CoreDataManager removeGankResultFromDB:xxentity];
+            } else {
+                [CoreDataManager insertGankResultToDB:xxentity];
+            }
+            return xxentity;
         }];
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ResourcesTableViewCell.class) forIndexPath:indexPath];
