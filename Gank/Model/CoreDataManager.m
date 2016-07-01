@@ -56,13 +56,15 @@
 
 #pragma mark - Public Methods
 
-- (BOOL)insertGankResultToDB:(GankResult *)result {
++ (BOOL)insertGankResultToDB:(GankResult *)result {
     if (!result) {
         return NO;
     }
     
-    NSEntityDescription *description = [NSEntityDescription entityForName:@"GankResultDB" inManagedObjectContext:self.managedContext];
-    GankResultDB *entityToInsert = [[GankResultDB alloc]initWithEntity:description insertIntoManagedObjectContext:self.managedContext];
+    CoreDataManager *instance = [self instance];
+    
+    NSEntityDescription *description = [NSEntityDescription entityForName:@"GankResultDB" inManagedObjectContext:instance.managedContext];
+    GankResultDB *entityToInsert = [[GankResultDB alloc]initWithEntity:description insertIntoManagedObjectContext:instance.managedContext];
     entityToInsert.id = result._id;
     entityToInsert.type = result.type;
     entityToInsert.desc = result.desc;
@@ -72,10 +74,12 @@
     return YES;
 }
 
-- (BOOL)removeGankResultFromDB:(GankResult *)result {
++ (BOOL)removeGankResultFromDB:(GankResult *)result {
     if (!result) {
         return NO;
     }
+    
+    CoreDataManager *instance = [self instance];
     
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"GankResultDB"];
     [request setPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
@@ -87,7 +91,7 @@
     }]];
     
     NSError *error = nil;
-    NSArray *objs = [self.managedContext executeFetchRequest:request error:&error];
+    NSArray *objs = [instance.managedContext executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"%s error:%@", __func__, error);
         return NO;
@@ -95,17 +99,47 @@
     
     if (objs.count > 0) {
         GankResultDB *entity = [objs firstObject];
-        [self.managedContext deleteObject:entity];
+        [instance.managedContext deleteObject:entity];
         return YES;
     }
     return NO;
 }
 
-- (NSArray <GankResult *> *)entitysByType:(NSString *)type {
++ (GankResult *)entityByID:(NSString *)ID {
+    if (ID.length <= 0) {
+        return nil;
+    }
+    
+    CoreDataManager *instance = [self instance];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"GankResultDB"];
+    [request setPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        GankResultDB *dbentity = evaluatedObject;
+        if ([dbentity.id isEqualToString:ID]) {
+            return YES;
+        }
+        return NO;
+    }]];
+    NSError *error = nil;
+    NSArray *results = [instance.managedContext executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"%s error:%@", __func__, error);
+        return nil;
+    }
+    if (results.count > 0) {
+        GankResultDB *dbentity = [results firstObject];
+        return [[GankResult alloc] initWithGankResultDB:dbentity];
+    }
+    return nil;
+}
+
++ (NSArray <GankResult *> *)entitysByType:(NSString *)type {
     BOOL needPredicate = YES;
     if (!type || type.length <= 0) {
         needPredicate = NO;
     }
+    
+    CoreDataManager *instance = [self instance];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"GankResultDB"];
     if (needPredicate) {
@@ -118,7 +152,7 @@
         }]];
     }
     NSError *error = nil;
-    NSArray *results = [self.managedContext executeFetchRequest:request error:&error];
+    NSArray *results = [instance.managedContext executeFetchRequest:request error:&error];
     if (error) {
         NSLog(@"%s error:%@", __func__, error);
         return nil;

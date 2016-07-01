@@ -21,8 +21,10 @@
 
 + (CoreDataManager *)instance;
 
-- (BOOL)insertGankResultToDB:(GankResult *)result;
-- (BOOL)removeGankResultFromDB:(GankResult *)result;
-- (NSArray <GankResult *> *)entitysByType:(NSString *)type;
++ (BOOL)insertGankResultToDB:(GankResult *)result;
++ (BOOL)removeGankResultFromDB:(GankResult *)result;
+
++ (NSArray <GankResult *> *)entitysByType:(NSString *)type;
++ (GankResult *)entityByID:(NSString *)ID;
 
 @end
