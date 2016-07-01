@@ -20,6 +20,7 @@
 #import <UITableView+FDTemplateLayoutCell.h>
 #import <MJRefresh/MJRefresh.h>
 #import "MBProgressHUD.h"
+#import <TLYShyNavBar/TLYShyNavBarManager.h>
 
 @interface DailyViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -51,6 +52,8 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
     [self.hud setRemoveFromSuperViewOnHide:NO];
     [self.hud hide:NO];
+    
+    self.shyNavBarManager.scrollView = self.tableView;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
