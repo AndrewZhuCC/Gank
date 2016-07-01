@@ -7,6 +7,7 @@
 //
 
 #import "GankResult.h"
+#import "GankResultDB+CoreDataProperties.h"
 
 @implementation GankResult
 
@@ -17,6 +18,17 @@
         _url = [NSURL URLWithString:[dic objectForKey:@"url"]];
         _who = [dic objectForKey:@"who"];
         _desc = [dic objectForKey:@"desc"];
+    }
+    return self;
+}
+
+- (instancetype)initWithGankResultDB:(GankResultDB *)entity {
+    if (self = [super init]) {
+        __id = entity.id;
+        _type = entity.type;
+        _url = entity.url;
+        _who = entity.who;
+        _desc = entity.desc;
     }
     return self;
 }

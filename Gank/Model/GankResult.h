@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class GankResultDB;
+
 @interface GankResult : NSObject
 
 @property (copy, nonatomic) NSString *_id;
@@ -17,5 +19,6 @@
 @property (copy, nonatomic) NSString *desc;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
+- (instancetype)initWithGankResultDB:(GankResultDB *)entity;
 
 @end

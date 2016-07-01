@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		490745371D260AB900CF7274 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 490745351D260AB900CF7274 /* Model.xcdatamodeld */; };
+		4907453C1D260BBE00CF7274 /* GankResultDB+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 490745391D260BBE00CF7274 /* GankResultDB+CoreDataProperties.m */; };
+		4907453D1D260BBE00CF7274 /* GankResultDB.m in Sources */ = {isa = PBXBuildFile; fileRef = 4907453B1D260BBE00CF7274 /* GankResultDB.m */; };
+		490745401D260C4E00CF7274 /* GankURLTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4907453F1D260C4E00CF7274 /* GankURLTransformer.m */; };
+		490745431D260D5E00CF7274 /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 490745421D260D5E00CF7274 /* CoreDataManager.m */; };
 		491AA5521D21202400E509F7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5511D21202400E509F7 /* main.m */; };
 		491AA5551D21202400E509F7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 491AA5541D21202400E509F7 /* AppDelegate.m */; };
 		491AA55D1D21202400E509F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 491AA55C1D21202400E509F7 /* Assets.xcassets */; };
@@ -50,6 +55,15 @@
 		27499AB16D9200EBC76BE1B6 /* libPods-Gank.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Gank.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29CF6A505B9C3B6FD1F3A734 /* Pods-Gank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.debug.xcconfig"; sourceTree = "<group>"; };
 		426D8936369ECF3B77BBDBCF /* Pods-Gank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gank.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gank/Pods-Gank.release.xcconfig"; sourceTree = "<group>"; };
+		490745361D260AB900CF7274 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		490745381D260BBE00CF7274 /* GankResultDB+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GankResultDB+CoreDataProperties.h"; sourceTree = "<group>"; };
+		490745391D260BBE00CF7274 /* GankResultDB+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GankResultDB+CoreDataProperties.m"; sourceTree = "<group>"; };
+		4907453A1D260BBE00CF7274 /* GankResultDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GankResultDB.h; sourceTree = "<group>"; };
+		4907453B1D260BBE00CF7274 /* GankResultDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankResultDB.m; sourceTree = "<group>"; };
+		4907453E1D260C4E00CF7274 /* GankURLTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GankURLTransformer.h; sourceTree = "<group>"; };
+		4907453F1D260C4E00CF7274 /* GankURLTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GankURLTransformer.m; sourceTree = "<group>"; };
+		490745411D260D5E00CF7274 /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		490745421D260D5E00CF7274 /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
 		491AA54D1D21202400E509F7 /* Gank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		491AA5511D21202400E509F7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		491AA5531D21202400E509F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -194,6 +208,15 @@
 				49F4F74C1D2389A200C28E7F /* GankDaily.m */,
 				49F4F7541D23AD4300C28E7F /* NetwokManager.h */,
 				49F4F7551D23AD4300C28E7F /* NetwokManager.m */,
+				490745411D260D5E00CF7274 /* CoreDataManager.h */,
+				490745421D260D5E00CF7274 /* CoreDataManager.m */,
+				490745351D260AB900CF7274 /* Model.xcdatamodeld */,
+				490745381D260BBE00CF7274 /* GankResultDB+CoreDataProperties.h */,
+				490745391D260BBE00CF7274 /* GankResultDB+CoreDataProperties.m */,
+				4907453A1D260BBE00CF7274 /* GankResultDB.h */,
+				4907453B1D260BBE00CF7274 /* GankResultDB.m */,
+				4907453E1D260C4E00CF7274 /* GankURLTransformer.h */,
+				4907453F1D260C4E00CF7274 /* GankURLTransformer.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,13 +449,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				490745431D260D5E00CF7274 /* CoreDataManager.m in Sources */,
+				490745401D260C4E00CF7274 /* GankURLTransformer.m in Sources */,
 				491AA5551D21202400E509F7 /* AppDelegate.m in Sources */,
 				49F4F73F1D22C35400C28E7F /* UINavigationController+M13ProgressViewBar.m in Sources */,
+				490745371D260AB900CF7274 /* Model.xcdatamodeld in Sources */,
 				49F4F73B1D22A8BF00C28E7F /* WebViewController.m in Sources */,
 				491AA5911D2123F200E509F7 /* GankResult.m in Sources */,
 				49F4F7321D227CE500C28E7F /* ResourcesViewController.m in Sources */,
 				49F4F7561D23AD4300C28E7F /* NetwokManager.m in Sources */,
+				4907453C1D260BBE00CF7274 /* GankResultDB+CoreDataProperties.m in Sources */,
 				491AA59C1D2205C500E509F7 /* XXTableViewCell.m in Sources */,
+				4907453D1D260BBE00CF7274 /* GankResultDB.m in Sources */,
 				49F4F74D1D2389A200C28E7F /* GankDaily.m in Sources */,
 				49F4F74A1D2388FC00C28E7F /* DailyViewController.m in Sources */,
 				49F4F7381D22A2B500C28E7F /* ResourcesTableViewCell.m in Sources */,
@@ -682,6 +710,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		490745351D260AB900CF7274 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				490745361D260AB900CF7274 /* Model.xcdatamodel */,
+			);
+			currentVersion = 490745361D260AB900CF7274 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 491AA5451D21202400E509F7 /* Project object */;
 }
