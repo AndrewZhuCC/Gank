@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TLYShyNavBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>UITableView+FDTemplateLayoutCell.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,12 +52,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>53480ED0BE09FF49E34B1702D485CAAB</key>
+		<key>343DC3541AC37E017DE0171CF6E29C7A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>66415C1274D148A5082392909624404D</key>
+		<key>45D7532CD2F06EFC49DDB852DF3E0070</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53480ED0BE09FF49E34B1702D485CAAB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,17 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9D7D96690F736CC6D7450446175089F</key>
+		<key>C3EFC40A2E0D4CFFD22555578B610BC4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CD160C20CF11FCF21EA42613CC415230</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F2FC0AF0815B5D127E0AA79352D5EB6A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F430524B3609B52B184B4BECE96EEB66</key>
 		<dict>
 			<key>primary</key>
 			<true/>
