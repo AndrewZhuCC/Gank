@@ -13,7 +13,12 @@
 @interface FullScreenImageViewer ()
 
 @property (assign, nonatomic) CGRect originRect;
-@property (weak, nonatomic) UIView *imageView;
+@property (assign, nonatomic) CGAffineTransform originTransform;
+@property (assign, nonatomic) CGPoint originCenter;
+
+@property (weak, nonatomic) UIImageView *imageView;
+@property (strong, nonatomic) UIPinchGestureRecognizer *pinchGr;
+@property (strong, nonatomic) UIPanGestureRecognizer *panGr;
 
 @end
 
@@ -24,8 +29,18 @@
     FullScreenImageViewer *view = [[FullScreenImageViewer alloc]initWithFrame:[UIScreen mainScreen].bounds];
     view.originRect = rect;
     
+    UIButton *hideButton = UIButton.new;
+    [hideButton addTarget:view action:@selector(hideButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:hideButton];
+    
     [view addSubview:imageView];
     view.imageView = imageView;
+    imageView.userInteractionEnabled = YES;
+    
+    view.pinchGr = [[UIPinchGestureRecognizer alloc]initWithTarget:view action:@selector(pinchRecognized:)];
+    view.panGr = [[UIPanGestureRecognizer alloc] initWithTarget:view action:@selector(panRecognized:)];
+    [imageView addGestureRecognizer:view.pinchGr];
+    [imageView addGestureRecognizer:view.panGr];
     
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.greaterThanOrEqualTo(view.mas_left);
@@ -35,10 +50,6 @@
         make.center.equalTo(view);
         make.width.equalTo(imageView.mas_height).multipliedBy(image.size.width / image.size.height);
     }];
-    
-    UIButton *hideButton = UIButton.new;
-    [hideButton addTarget:view action:@selector(hideButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:hideButton];
     
     [hideButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(view);
@@ -68,6 +79,48 @@
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
+}
+
+- (void)pinchRecognized:(UIPinchGestureRecognizer *)gr {
+    switch (gr.state) {
+        case UIGestureRecognizerStateBegan: {
+            CGAffineTransform transform = self.imageView.transform;
+            self.originTransform = transform;
+            transform = CGAffineTransformScale(transform, gr.scale, gr.scale);
+            self.imageView.transform = transform;
+            break;
+        }
+        case UIGestureRecognizerStateChanged:
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: {
+            CGAffineTransform transform = self.originTransform;
+            transform = CGAffineTransformScale(transform, gr.scale, gr.scale);
+            self.imageView.transform = transform;
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)panRecognized:(UIPanGestureRecognizer *)gr {
+    switch (gr.state) {
+        case UIGestureRecognizerStateBegan: {
+            self.originCenter = self.imageView.center;
+            CGPoint point = [gr translationInView:self];
+            self.imageView.center = CGPointMake(self.imageView.center.x + point.x, self.imageView.center.y + point.y);
+            break;
+        }
+        case UIGestureRecognizerStateChanged:
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: {
+            CGPoint point = [gr translationInView:self];
+            self.imageView.center = CGPointMake(self.originCenter.x + point.x, self.originCenter.y + point.y);
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 @end
