@@ -17,6 +17,7 @@
 #import <UITableView+FDTemplateLayoutCell/UITableView+FDTemplateLayoutCell.h>
 #import <IGLDropDownMenu/IGLDropDownMenu.h>
 #import "MBProgressHUD.h"
+#import <TLYShyNavBar/TLYShyNavBarManager.h>
 
 typedef NS_ENUM(NSUInteger, Resource_Type) {
     Resource_Type_IOS = 0,
@@ -77,6 +78,8 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.hud setRemoveFromSuperViewOnHide:NO];
     [self.hud hide:YES];
+    
+    self.shyNavBarManager.scrollView = self.tableView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -167,7 +170,7 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
         [items addObject:item];
     }
     [self.menu setDropDownItems:[items copy]];
-    [self.menu setFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width / 2.0 - 50, 0, 100, 40)];
+    [self.menu setFrame:CGRectMake(UIScreen.mainScreen.bounds.size.width  - 110, 0, 100, 40)];
     self.menu.paddingLeft = 15;
     self.menu.menuText = @"Resources";
     self.menu.type =  IGLDropDownMenuTypeSlidingInBoth;
