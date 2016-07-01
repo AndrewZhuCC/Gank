@@ -10,8 +10,10 @@
 
 @class GankResult;
 
+typedef GankResult *(^ButtonCollectionAction)(UIButton *button);
+
 @interface XXTableViewCell : UITableViewCell
 - (void)configureCellWithEntity:(GankResult *)entity completionBlock:(void(^)())completion;
 - (void)configureTemplateWithEntity:(GankResult *)entity;
-- (CGFloat)heightOfCell;
+- (void)setCollectionButtonAction:(ButtonCollectionAction)action;
 @end

@@ -8,6 +8,7 @@
 
 #import "XXTableViewCell.h"
 #import "GankResult.h"
+#import "CoreDataManager.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <Masonry/Masonry.h>
@@ -15,7 +16,10 @@
 @interface XXTableViewCell ()
 @property (strong, nonatomic) UIImageView *imgView;
 @property (strong, nonatomic) UILabel *lbAuthor;
+@property (strong, nonatomic) UIButton *btnCollection;
+
 @property (assign, nonatomic) BOOL template;
+@property (copy, nonatomic) ButtonCollectionAction collectionAction;
 
 @end
 
@@ -61,10 +65,25 @@
     [_lbAuthor setBackgroundColor:[UIColor clearColor]];
     [_lbAuthor setTextColor:[UIColor lightGrayColor]];
     [contentView addSubview:_lbAuthor];
+    
+    _btnCollection = UIButton.new;
+    [_btnCollection setBackgroundImage:[UIImage imageNamed:@"uncollected"] forState:UIControlStateNormal];
+    [_btnCollection addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [contentView addSubview:_btnCollection];
 }
+
+- (void)buttonAction:(UIButton *)sender {
+    if (self.collectionAction) {
+        GankResult *entity = self.collectionAction(sender);
+        [self refreshButtonImgWithEntity:entity];
+    }
+}
+
+#pragma mark - AutoLayout
 
 - (void)prepareForReuse {
     self.imgView.image = nil;
+    self.collectionAction = nil;
     [super prepareForReuse];
 }
 
@@ -91,11 +110,33 @@
         make.bottom.equalTo(self.contentView.mas_bottom).with.offset(-8);
     }];
     
+    [_btnCollection mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_imgView.mas_left).with.offset(8);
+        make.bottom.equalTo(_imgView.mas_bottom).with.offset(-8);
+        make.size.mas_equalTo(CGSizeMake(20, 20));
+    }];
+    
     [super updateConstraints];
 }
 
+- (void)refreshButtonImgWithEntity:(GankResult *)entity {
+    if (!entity) {
+        return;
+    }
+    
+    GankResult *dbentity = [CoreDataManager entityByID:entity._id];
+    if (dbentity) {
+        [self.btnCollection setBackgroundImage:[UIImage imageNamed:@"collected"] forState:UIControlStateNormal];
+    } else {
+        [self.btnCollection setBackgroundImage:[UIImage imageNamed:@"uncollected"] forState:UIControlStateNormal];
+    }
+}
+
+#pragma Public Methods
+
 - (void)configureCellWithEntity:(GankResult *)entity completionBlock:(void(^)())completion {
     [self.lbAuthor setText:entity.who];
+    [self refreshButtonImgWithEntity:entity];
     __weak typeof(self) wself = self;
     [self.imgView sd_setImageWithURL:entity.url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         typeof(wself) sself = wself;
@@ -126,8 +167,10 @@
     }];
 }
 
-- (CGFloat)heightOfCell {
-    return self.imgView.image.size.height + 10;
+- (void)setCollectionButtonAction:(ButtonCollectionAction)action {
+    if (action) {
+        self.collectionAction = action;
+    }
 }
 
 @end

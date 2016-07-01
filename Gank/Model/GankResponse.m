@@ -58,6 +58,7 @@
             if (fl) {
                 [mcategory removeObject:fl];
                 [mcategory insertObject:fl atIndex:0];
+                category = [mcategory copy];
             }
             
             if ([tempResults isKindOfClass:[NSDictionary class]] && [category isKindOfClass:[NSArray class]]) {

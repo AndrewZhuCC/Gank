@@ -82,13 +82,7 @@
     CoreDataManager *instance = [self instance];
     
     NSFetchRequest *request = [[NSFetchRequest alloc]initWithEntityName:@"GankResultDB"];
-    [request setPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-        GankResultDB *obj = evaluatedObject;
-        if ([obj.id isEqualToString:result._id]) {
-            return YES;
-        }
-        return NO;
-    }]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"id == %@", result._id]];
     
     NSError *error = nil;
     NSArray *objs = [instance.managedContext executeFetchRequest:request error:&error];
@@ -113,13 +107,7 @@
     CoreDataManager *instance = [self instance];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"GankResultDB"];
-    [request setPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-        GankResultDB *dbentity = evaluatedObject;
-        if ([dbentity.id isEqualToString:ID]) {
-            return YES;
-        }
-        return NO;
-    }]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"id == %@", ID]];
     NSError *error = nil;
     NSArray *results = [instance.managedContext executeFetchRequest:request error:&error];
     if (error) {
@@ -143,13 +131,7 @@
     
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"GankResultDB"];
     if (needPredicate) {
-        [request setPredicate:[NSPredicate predicateWithBlock:^BOOL(id  _Nonnull evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-            GankResultDB *entity = evaluatedObject;
-            if ([entity.type isEqualToString:type]) {
-                return YES;
-            }
-            return NO;
-        }]];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"type == %@" ,type]];
     }
     NSError *error = nil;
     NSArray *results = [instance.managedContext executeFetchRequest:request error:&error];

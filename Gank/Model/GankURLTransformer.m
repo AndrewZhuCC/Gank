@@ -22,11 +22,13 @@
         return value;
     }
     NSURL *url = value;
-    return [url dataRepresentation];
+    NSString *urls = [url absoluteString];
+    return [urls dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 - (id)reverseTransformedValue:(id)value {
-    return [NSURL URLWithDataRepresentation:value relativeToURL:nil];
+    NSData *data = value;
+    return [NSURL URLWithString:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
 }
 
 @end

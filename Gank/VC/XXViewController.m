@@ -10,6 +10,7 @@
 #import "XXTableViewCell.h"
 #import "GankResult.h"
 #import "GankResponse.h"
+#import "CoreDataManager.h"
 
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
@@ -35,6 +36,7 @@
     [self configureTableView];
     [self.navigationController.navigationBar setTranslucent:YES];
     [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:1 green:0.5 blue:0 alpha:0.7]];
+    self.navigationController.navigationBar.hidden = YES;
     [self.view setBackgroundColor:[UIColor colorWithRed:1 green:0.5 blue:0 alpha:0.7]];
     
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -144,6 +146,16 @@
         if ([visible containsObject:cell]) {
             [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
         }
+    }];
+    [cell setCollectionButtonAction:^GankResult *(UIButton *button) {
+        GankResult *entity = [self.entitys objectAtIndex:indexPath.row];
+        GankResult *dbentity = [CoreDataManager entityByID:entity._id];
+        if (dbentity) {
+            [CoreDataManager removeGankResultFromDB:entity];
+        } else {
+            [CoreDataManager insertGankResultToDB:entity];
+        }
+        return entity;
     }];
     return cell;
 }
