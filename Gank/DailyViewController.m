@@ -45,8 +45,8 @@
     
     [self configureTableView];
     [self.navigationController.navigationBar setTranslucent:YES];
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.8 alpha:0.7]];
-    [self.view setBackgroundColor:UIColorFromRGB_A(0x00f5ff, 1)];
+    [self.navigationController.navigationBar setBackgroundColor:UIColorFromRGB_A(0x2196f3, 0.7)];
+    [self.view setBackgroundColor:UIColorFromRGB_A(0x2196f3, 1)];
     
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
     [self.hud setRemoveFromSuperViewOnHide:NO];

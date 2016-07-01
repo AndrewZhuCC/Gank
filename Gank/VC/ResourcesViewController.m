@@ -71,8 +71,8 @@ typedef NS_ENUM(NSUInteger, Resource_Type) {
     [self configureDropdownMenu];
     [self configureTableView];
     [self.navigationController.navigationBar setTranslucent:YES];
-    [self.navigationController.navigationBar setBackgroundColor:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.7]];
-    self.view.backgroundColor = UIColorFromRGB_A(0x98f5ff, 1);
+    [self.navigationController.navigationBar setBackgroundColor:UIColorFromRGB_A(0x03a9f4, 0.7)];
+    self.view.backgroundColor = UIColorFromRGB_A(0x03a9f4, 1);
     
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.hud setRemoveFromSuperViewOnHide:NO];
