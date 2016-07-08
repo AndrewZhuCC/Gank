@@ -11,10 +11,11 @@
 @class GankResult;
 
 typedef GankResult *(^ButtonCollectionAction)(UIButton *button);
+typedef void(^DownloadImageCompletion)(UIImage *image, NSError *error);
 
 @interface XXTableViewCell : UITableViewCell
 @property (readonly, strong, nonatomic) UIImageView *imgView;
-- (void)configureCellWithEntity:(GankResult *)entity completionBlock:(void(^)())completion;
+- (void)configureCellWithEntity:(GankResult *)entity completionBlock:(DownloadImageCompletion)completion;
 - (void)configureTemplateWithEntity:(GankResult *)entity;
 - (void)setCollectionButtonAction:(ButtonCollectionAction)action;
 @end

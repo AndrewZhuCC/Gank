@@ -143,13 +143,20 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     XXTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(XXTableViewCell.class) forIndexPath:indexPath];
-    [cell configureCellWithEntity:self.entitys[indexPath.row] completionBlock:^{
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    XXTableViewCell *mycell = (XXTableViewCell *)cell;
+    [mycell configureCellWithEntity:self.entitys[indexPath.row] completionBlock:^(UIImage *image, NSError *error){
         NSArray *visible = [tableView visibleCells];
         if ([visible containsObject:cell]) {
-            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+            mycell.imgView.image = image;
+            [mycell updateConstraints];
+            [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
-    [cell setCollectionButtonAction:^GankResult *(UIButton *button) {
+    [mycell setCollectionButtonAction:^GankResult *(UIButton *button) {
         GankResult *entity = [self.entitys objectAtIndex:indexPath.row];
         GankResult *dbentity = [CoreDataManager entityByID:entity._id];
         if (dbentity) {
@@ -159,14 +166,13 @@
         }
         return entity;
     }];
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     GankResult *entity = self.entitys[indexPath.row];
-    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass(XXTableViewCell.class) configuration:^(id cell) {
-        XXTableViewCell *mycell = (XXTableViewCell *)cell;
+    return [tableView fd_heightForCellWithIdentifier:NSStringFromClass(XXTableViewCell.class) configuration:^(__kindof UITableViewCell* cell) {
+        XXTableViewCell *mycell = cell;
         [mycell configureTemplateWithEntity:entity];
     }];
 }

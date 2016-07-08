@@ -211,14 +211,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
+    if ([self.entity.category[indexPath.section] isEqualToString:@"福利"]) {
+        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(XXTableViewCell.class) forIndexPath:indexPath];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ResourcesTableViewCell.class) forIndexPath:indexPath];
+    }
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *key = self.entity.category[indexPath.section];
     GankResult *xxentity = [self.entity.results objectForKey:key][indexPath.row];
     if ([self.entity.category[indexPath.section] isEqualToString:@"福利"]) {
-        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(XXTableViewCell.class) forIndexPath:indexPath];
-        [(XXTableViewCell *)cell configureCellWithEntity:xxentity completionBlock:^{
+        [(XXTableViewCell *)cell configureCellWithEntity:xxentity completionBlock:^(UIImage *image, NSError *error){
             NSArray *visible = [tableView visibleCells];
             if ([visible containsObject:cell]) {
-                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [(XXTableViewCell *)cell imgView].image = image;
+                [cell updateConstraints];
+                [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             }
         }];
         [(XXTableViewCell *)cell setCollectionButtonAction:^GankResult *(UIButton *button) {
@@ -231,10 +241,8 @@
             return xxentity;
         }];
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass(ResourcesTableViewCell.class) forIndexPath:indexPath];
         [(ResourcesTableViewCell *)cell configureCellWithEntity:xxentity];
     }
-    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -134,17 +134,18 @@
 
 #pragma Public Methods
 
-- (void)configureCellWithEntity:(GankResult *)entity completionBlock:(void(^)())completion {
+- (void)configureCellWithEntity:(GankResult *)entity completionBlock:(DownloadImageCompletion)completion {
     [self.lbAuthor setText:entity.who];
     [self refreshButtonImgWithEntity:entity];
     __weak typeof(self) wself = self;
     [self.imgView sd_setImageWithURL:entity.url placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        NSLog(@"complete:%@", self);
         typeof(wself) sself = wself;
         if (image && sself) {
-            sself.imgView.image = image;
-            [sself updateConstraints];
+//            sself.imgView.image = image;
+//            [sself updateConstraints];
             if (completion) {
-                completion();
+                completion(image, error);
             }
         } else {
             NSLog(@"error:%@", error);
