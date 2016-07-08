@@ -20,12 +20,17 @@
 #import "MBProgressHUD.h"
 
 @interface XXViewController () <UITableViewDelegate, UITableViewDataSource>
+
 @property (weak, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) MBProgressHUD *hud;
 
 @property (strong, nonatomic) NSMutableArray<GankResult *> *entitys;
 @property (strong, nonatomic) NSURLSessionDataTask *task;
 @property (assign, nonatomic) NSInteger page;
+
+@property (assign, nonatomic) BOOL collectionMode;
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipeGR;
+
 @end
 
 @implementation XXViewController
@@ -44,6 +49,13 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.hud setRemoveFromSuperViewOnHide:NO];
     [self.hud hide:NO];
+    
+    self.swipeGR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(panRecognized:)];
+    [self.view addGestureRecognizer:self.swipeGR];
+    
+    if (self.collectionMode) {
+        [self.entitys addObjectsFromArray:[CoreDataManager entitysByType:@"福利"]];
+    }
 }
 
 - (void)getEntitysFromNet {
@@ -129,8 +141,10 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getEntitysFromNet)];
-    [self.tableView.mj_footer beginRefreshing];
+    if (!self.collectionMode) {
+        self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getEntitysFromNet)];
+        [self.tableView.mj_footer beginRefreshing];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -187,6 +201,21 @@
         CGRect rect = [cell.imgView.superview convertRect:cell.imgView.frame toView:[UIApplication sharedApplication].keyWindow];
         return rect;
     }];
+}
+
+#pragma mark - Collection Mode
+
+- (void)panRecognized:(UISwipeGestureRecognizer *)gr {
+    if (gr.state == UIGestureRecognizerStateRecognized && (gr.direction & UISwipeGestureRecognizerDirectionRight)) {
+        if (!self.collectionMode) {
+            typeof(self) collectionVC = self.class.new;
+            collectionVC.collectionMode = YES;
+            collectionVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:collectionVC animated:YES completion:nil];
+        } else if (self.collectionMode) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
 }
 
 @end

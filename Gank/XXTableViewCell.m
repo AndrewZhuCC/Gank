@@ -139,7 +139,6 @@
     [self refreshButtonImgWithEntity:entity];
     __weak typeof(self) wself = self;
     [self.imgView sd_setImageWithURL:entity.url placeholderImage:[UIImage imageNamed:@"placeholder"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        NSLog(@"complete:%@", self);
         typeof(wself) sself = wself;
         if (image && sself) {
 //            sself.imgView.image = image;
